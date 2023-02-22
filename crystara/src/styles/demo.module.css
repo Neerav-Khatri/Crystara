@@ -1,0 +1,9 @@
+.maindiv{
+    border:1px solid red;
+    min-height: 300rem;
+    width: 70%;
+    margin:auto;
+    overflow-x: hidden;
+    background-color: red;
+  
+  }
