@@ -106,8 +106,11 @@ a {
   }
 } */
 
-
-.sticky{
+* {
+  margin: 0;
+  padding: 0;
+}
+.sticky {
   width: 100%;
   margin: auto;
   z-index: 10;
@@ -115,4 +118,43 @@ a {
   position: sticky;
   top: 0;
   height: 70px;
+}
+
+.dropdown-box-content {
+  border: 1px solid rgb(175, 135, 175);
+  border-top: none;
+  border-left: none;
+  border-right: none;
+}
+
+.dropdown-box {
+  border: 1px solid rgb(175, 135, 175);
+  position: absolute;
+  top: 40px;
+  z-index: 10;
+  background-color: white;
+  overflow: scroll;
+  width: 100%;
+  max-height: 200px;
+  padding: 10px;
+  scroll-behavior: smooth;
+}
+
+.footer-payment-method {
+  position: sticky;
+  top: 500px;
+  z-index: 100000;
+}
+
+.navbar-cart-count {
+  position: absolute;
+  width: 20px;
+  height: 20px;
+  background-color: black;
+  color: white;
+  padding: 2px;
+  text-align: center;
+  border-radius: 50%;
+  left: -8px;
+  top: -8px;
 }
