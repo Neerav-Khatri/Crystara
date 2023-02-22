@@ -1,3 +1,4 @@
+import { getAllProductsNavbarAPI } from "@/redux/ProductPage/action";
 import {
   Box,
   Input,
@@ -7,6 +8,7 @@ import {
   Text,
   useBoolean,
 } from "@chakra-ui/react";
+import axios from "axios";
 import Link from "next/link";
 import React, { useEffect, useState } from "react";
 import { BsSearch } from "react-icons/bs";
@@ -19,18 +21,22 @@ const NavSearch = () => {
   const [query, setQuery] = useState("");
   const [suggestions, setSuggestions] = useState([]);
   const [showDropdown, setShowDropdown] = useBoolean();
-  //   const products = useAppSelector((store) => store.AppReducer.data);
+  const [products, setProducts] = useState([]);
 
   const throttledText = useThrottle(query, 400);
 
   useEffect(() => {
     //run some logic
+    getAllProductsNavbarAPI().then((r) => {
+      setProducts(r);
+    });
+
     if (throttledText === "") {
       setSuggestions([]);
     } else {
       console.log(throttledText);
       let newSuggestions = products.filter((item) => {
-        return item.title
+        return item.name
           .split(" ")
           .join("")
           .trim()
@@ -39,7 +45,7 @@ const NavSearch = () => {
           ? true
           : false;
       });
-      console.log(newSuggestions);
+      // console.log(newSuggestions);
       setSuggestions(newSuggestions);
       setShowDropdown.on();
     }
@@ -69,26 +75,20 @@ const NavSearch = () => {
       </InputGroup>
       {suggestions.length > 0 && (
         <Box
-          border="1px solid black"
-          borderRadius="5px"
-          position="absolute"
-          top="50px"
-          zIndex="10"
-          bgColor="white"
-          overflow="scroll"
-          w="100%"
-          maxH="400px"
+          className="dropdown-box"
         >
           {suggestions.map((item) => {
             return (
-              <Link to={`/product/${item.id}`}>
-                <Text
-                  fontSize="xl"
-                  cursor="pointer"
-                  onClick={clickToOffDropdown}
-                >
-                  {item.title}
-                </Text>
+              <Link href={`/${query}/${item.id}`}>
+                <Box className="dropdown-box-content">
+                  <Text
+                    fontSize="xl"
+                    cursor="pointer"
+                    onClick={clickToOffDropdown}
+                  >
+                    {item.name}
+                  </Text>
+                </Box>
               </Link>
             );
           })}

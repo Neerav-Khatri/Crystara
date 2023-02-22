@@ -17,6 +17,14 @@ import {
   Input,
   Heading,
   Divider,
+  Modal,
+  ModalOverlay,
+  ModalContent,
+  ModalHeader,
+  ModalCloseButton,
+  ModalBody,
+  ModalFooter,
+  Select,
 } from "@chakra-ui/react";
 import {
   HamburgerIcon,
@@ -24,12 +32,13 @@ import {
   ChevronDownIcon,
   ChevronRightIcon,
 } from "@chakra-ui/icons";
-import NavSearch from "./navsearch";
+import NavSearch from "./Navsearch";
 import Image from "next/image";
 import { IoIosHeart, IoIosPerson, IoIosPin } from "react-icons/io";
-import { IoBagSharp } from "react-icons/io5";
+
 import { useEffect, useState } from "react";
-import { BsBag } from "react-icons/bs";
+import { BsBag, BsHeart } from "react-icons/bs";
+import { getCountryFlag } from "@/redux/ProductPage/action";
 // import styles from '@/styles/Home.module.css'
 // import "../styles/globals.css";
 // import styles from "../styles/Home.module.css"
@@ -38,22 +47,22 @@ export default function Navbar() {
   const { isOpen, onToggle } = useDisclosure();
   const [currLocation, setCurrLocation] = useState("");
   const [enterPin, setEnterPin] = useState("");
-  const [showPin, setShowPin] = useState("");
+
   const [blockName, setBlockName] = useState("");
-  const getlocation = () => {
-    fetch(`https://ipapi.co/json`)
-      .then((res) => res.json())
-      .then((r) => {
-        console.log(r);
-        setCurrLocation(r.city);
-      });
-  };
+  // const getlocation = () => {
+  //   fetch(`https://ipapi.co/json`)
+  //     .then((res) => res.json())
+  //     .then((r) => {
+  //       console.log(r);
+  //       setCurrLocation(r.city);
+  //     });
+  // };
   const handleChange = (e) => {
     e.preventDefault();
     setEnterPin(e.target.value);
   };
   const handlePincode = () => {
-    setShowPin(enterPin);
+    // setShowPin(enterPin);
     fetch(`https://api.postalpincode.in/pincode/${enterPin}`)
       .then((r) => r.json())
       .then((res) => {
@@ -69,7 +78,7 @@ export default function Navbar() {
   return (
     <Box className="sticky">
       <Flex
-        bg={useColorModeValue("purple.100", "gray.100")}
+        bg={useColorModeValue("#E9D5EF", "gray.100")}
         color={useColorModeValue("gray.600", "white")}
         minH={"60px"}
         py={{ base: 2 }}
@@ -103,7 +112,12 @@ export default function Navbar() {
             fontFamily={"heading"}
             color={useColorModeValue("gray.800", "white")}
           >
-            <Image src={"/mylogo.png"} width={110} height={70} alt={"logo"} />
+            <Image
+              src={"/same_color1.png"}
+              width={110}
+              height={70}
+              alt={"logo"}
+            />
           </Text>
 
           <Flex display={{ base: "none", md: "flex" }} align="center" ml={10}>
@@ -151,6 +165,7 @@ export default function Navbar() {
                   rounded={"xl"}
                   minW={"sm"}
                   marginTop="10px"
+                  color="purple"
                 >
                   <Stack>
                     <Heading>Pincode</Heading>
@@ -162,8 +177,13 @@ export default function Navbar() {
                   </Stack>
                 </PopoverContent>
               </Popover>
-              <Text fontSize={"sm"}>{showPin ? blockName : ""}</Text>
+              <Text fontSize={"sm"}>
+                {enterPin.length > 0 ? blockName : ""}
+              </Text>
             </Flex>
+            <Box>
+              <BasicUsage />
+            </Box>
             <Flex justifyContent={"center"} alignItems="center">
               <Popover trigger={"hover"} placement={"bottom-start"}>
                 <PopoverTrigger>
@@ -172,7 +192,7 @@ export default function Navbar() {
                     href={"#"}
                     fontSize={"lg"}
                     fontWeight={500}
-                    //   color={linkColor}
+                    // color={"white"}
                     _hover={{
                       textDecoration: "none",
                       color: "green",
@@ -185,25 +205,25 @@ export default function Navbar() {
                 <PopoverContent
                   border={0}
                   boxShadow={"xl"}
-                  bg={"blackAlpha.300"}
+                  bg={"blackAlpha.100"}
                   p={4}
                   rounded={"xl"}
                   minW={"sm"}
                   marginTop="10px"
+                  color="purple"
                 >
                   <Stack>
-                    <Text>SignUp</Text>
+                    <Heading>SignUP</Heading>
                     <Divider />
-                    <Text>Login</Text>
+                    <Text>User</Text>
+                    <Divider />
+                    <Text>Admin</Text>
                   </Stack>
                 </PopoverContent>
               </Popover>
               {/* <Text fontSize={"sm"}>{showPin ? blockName: ""}</Text> */}
             </Flex>
 
-            {/* <Box>
-              <IoIosHeart size={"30px"} />
-            </Box> */}
             {/* <Box>
               <IoBagSharp size={"30px"} />
               {"0"}
@@ -221,7 +241,7 @@ export default function Navbar() {
               //   ref={btnRef}
               //   onClick={onOpen}
             >
-              <IoIosHeart size={"30px"} />
+              <BsHeart />
               {"0"}
             </Button>
             <Button
@@ -287,11 +307,17 @@ const DesktopNav = () => {
                   marginTop="5px"
                   minW={"8xl"}
                 >
-                  <Stack>
-                    {navItem.children.map((child) => (
-                      <DesktopSubNav key={child.label} {...child} />
-                    ))}
-                  </Stack>
+                  <Text fontWeight={"bold"}>{navItem.material}</Text>
+                  <Flex align={"center"} justifyContent="space-evenly" >
+                    <Stack>
+                      {navItem.children.map((child) => (
+                        <DesktopSubNav key={child.label} {...child} />
+                      ))}
+                    </Stack>
+                    <Stack>
+                      <Image src={navItem.disImage} alt="Display-image" width={500} height={200} />
+                    </Stack>
+                  </Flex>
                 </PopoverContent>
               )}
             </Popover>
@@ -302,7 +328,158 @@ const DesktopNav = () => {
   );
 };
 
-const DesktopSubNav = ({ label, href, subLabel }) => {
+const NAV_ITEMS = [
+  {
+    label: "New Arrivals",
+    href: "/newArrivals",
+  },
+  {
+    label: "Rings",
+    material: "Shop by Metal",
+    disImage:
+      "https://banner.caratlane.com/live-images/ddb6596303814dd7a618df6c0ee4cd1c.jpg",
+    children: [
+      {
+        label: "Diamond",
+        subLabel: "Find your dream design job",
+        href: "#",
+        src: "https://banner.caratlane.com/live-images/9440e36056344d9b87f2595609645a72.png",
+      },
+      {
+        label: "Solitaire",
+        subLabel: "Find your dream design job",
+        href: "#",
+        src: "https://banner.caratlane.com/live-images/d782ca3b7cb14d49bc7f2e12e92a2e80.png",
+      },
+      {
+        label: "Gemestone",
+        subLabel: "Find your dream design job",
+        href: "#",
+        src: "https://banner.caratlane.com/live-images/d1a7f911832941a397924c2d91b8a4be.png",
+      },
+      {
+        label: "Gold",
+        subLabel: "Find your dream design job",
+        href: "#",
+        src: "https://banner.caratlane.com/live-images/42312a2603064c83ab56f5991e09285d.png",
+      },
+      {
+        label: "Yellow Gold",
+        subLabel: "Find your dream design job",
+        href: "#",
+        src: "https://banner.caratlane.com/live-images/42312a2603064c83ab56f5991e09285d.png",
+      },
+    ],
+  },
+  {
+    label: "Earrings",
+    material: "Shop by Metal",
+    disImage:
+      "https://banner.caratlane.com/live-images/88d76b4bce844970b3a522f9818bbf72.jpg",
+    children: [
+      {
+        label: "Diamond",
+        subLabel: "Find your dream design job",
+        href: "#",
+        src: "https://banner.caratlane.com/live-images/9440e36056344d9b87f2595609645a72.png",
+      },
+      {
+        label: "Solitaire",
+        subLabel: "Find your dream design job",
+        href: "#",
+        src: "https://banner.caratlane.com/live-images/d782ca3b7cb14d49bc7f2e12e92a2e80.png",
+      },
+      {
+        label: "Gemestone",
+        subLabel: "Find your dream design job",
+        href: "#",
+        src: "https://banner.caratlane.com/live-images/d1a7f911832941a397924c2d91b8a4be.png",
+      },
+      {
+        label: "Gold",
+        subLabel: "Find your dream design job",
+        href: "#",
+        src: "https://banner.caratlane.com/live-images/42312a2603064c83ab56f5991e09285d.png",
+      },
+      {
+        label: "Yellow Gold",
+        subLabel: "Find your dream design job",
+        href: "#",
+        src: "https://banner.caratlane.com/live-images/42312a2603064c83ab56f5991e09285d.png",
+      },
+    ],
+  },
+  {
+    label: "Bracelets & Bangles",
+    material: "Shop by Metal",
+    disImage:
+      "https://banner.caratlane.com/live-images/35d5813bca7e4d65bd35aa032d180f9c.jpg",
+    children: [
+      {
+        label: "Diamond",
+        subLabel: "Find your dream design job",
+        href: "#",
+        src: "https://banner.caratlane.com/live-images/9440e36056344d9b87f2595609645a72.png",
+      },
+      {
+        label: "Platinum",
+        subLabel: "Find your dream design job",
+        href: "#",
+        src: "https://banner.caratlane.com/live-images/9cfaf3c857f942a2a5218ad7aa8c0283.png",
+      },
+      {
+        label: "Gemestone",
+        subLabel: "Find your dream design job",
+        href: "#",
+        src: "https://banner.caratlane.com/live-images/d1a7f911832941a397924c2d91b8a4be.png",
+      },
+      {
+        label: "Gold",
+        subLabel: "Find your dream design job",
+        href: "#",
+        src: "https://banner.caratlane.com/live-images/42312a2603064c83ab56f5991e09285d.png",
+      },
+      {
+        label: "Yellow Gold",
+        subLabel: "Find your dream design job",
+        href: "#",
+        src: "https://banner.caratlane.com/live-images/42312a2603064c83ab56f5991e09285d.png",
+      },
+    ],
+  },
+  // {
+  //   label: "Earrings",
+  //   children: [
+  //     {
+  //       label: "Explore Design Work",
+  //       subLabel: "Trending Design to inspire you",
+  //       href: "#",
+  //     },
+  //     {
+  //       label: "New & Noteworthy",
+  //       subLabel: "Up-and-coming Designers",
+  //       href: "#",
+  //     },
+  //   ],
+  // },
+  // {
+  //   label: "Bracelets & Bangles",
+  //   children: [
+  //     {
+  //       label: "Explore Design Work",
+  //       subLabel: "Trending Design to inspire you",
+  //       href: "#",
+  //     },
+  //     {
+  //       label: "New & Noteworthy",
+  //       subLabel: "Up-and-coming Designers",
+  //       href: "#",
+  //     },
+  //   ],
+  // },
+];
+
+const DesktopSubNav = ({ label, href, src }) => {
   return (
     <Link
       href={href}
@@ -312,7 +489,7 @@ const DesktopSubNav = ({ label, href, subLabel }) => {
       rounded={"md"}
       _hover={{ bg: useColorModeValue("pink.50", "gray.900") }}
     >
-      <Stack direction={"row"} align={"center"}>
+      <Flex justifyContent={"space-between"} gap={6} align={"center"}>
         <Box>
           <Text
             transition={"all .3s ease"}
@@ -321,9 +498,13 @@ const DesktopSubNav = ({ label, href, subLabel }) => {
           >
             {label}
           </Text>
-          <Text fontSize={"sm"}>{subLabel}</Text>
+
+          {/* <Text fontSize={"sm"}>{subLabel}</Text> */}
         </Box>
-        <Flex
+        <Box>
+          <Image src={src} alt="sub-img" width={20} height={20} />
+        </Box>
+        {/* <Flex
           transition={"all .3s ease"}
           transform={"translateX(-10px)"}
           opacity={0}
@@ -333,8 +514,8 @@ const DesktopSubNav = ({ label, href, subLabel }) => {
           flex={1}
         >
           <Icon color={"pink.400"} w={5} h={5} as={ChevronRightIcon} />
-        </Flex>
-      </Stack>
+        </Flex> */}
+      </Flex>
     </Link>
   );
 };
@@ -347,13 +528,16 @@ const MobileNav = () => {
       display={{ md: "none" }}
     >
       {NAV_ITEMS.map((navItem) => (
+        <>
+        
         <MobileNavItem key={navItem.label} {...navItem} />
+        </>
       ))}
     </Stack>
   );
 };
 
-const MobileNavItem = ({ label, children, href }) => {
+const MobileNavItem = ({ label, children, href,material }) => {
   const { isOpen, onToggle } = useDisclosure();
 
   return (
@@ -368,6 +552,7 @@ const MobileNavItem = ({ label, children, href }) => {
           textDecoration: "none",
         }}
       >
+        {/* <Text>{material}</Text> */}
         <Text
           fontWeight={600}
           color={useColorModeValue("gray.600", "gray.200")}
@@ -406,54 +591,65 @@ const MobileNavItem = ({ label, children, href }) => {
   );
 };
 
-const NAV_ITEMS = [
-  {
-    label: "New Arrivals",
-    href: "#",
-  },
-  {
-    label: "Rings",
-    children: [
-      {
-        label: "Job Board",
-        subLabel: "Find your dream design job",
-        href: "#",
-      },
-      {
-        label: "Freelance Projects",
-        subLabel: "An exclusive list for contract work",
-        href: "#",
-      },
-    ],
-  },
-  {
-    label: "Earrings",
-    children: [
-      {
-        label: "Explore Design Work",
-        subLabel: "Trending Design to inspire you",
-        href: "#",
-      },
-      {
-        label: "New & Noteworthy",
-        subLabel: "Up-and-coming Designers",
-        href: "#",
-      },
-    ],
-  },
-  {
-    label: "Bracelets & Bangles",
-    children: [
-      {
-        label: "Explore Design Work",
-        subLabel: "Trending Design to inspire you",
-        href: "#",
-      },
-      {
-        label: "New & Noteworthy",
-        subLabel: "Up-and-coming Designers",
-        href: "#",
-      },
-    ],
-  },
-];
+function BasicUsage() {
+  const { isOpen, onOpen, onClose } = useDisclosure();
+  const [country, setCountry] = useState(``);
+  const [src, setSrc] = useState(`https://countryflagsapi.com/png/in`);
+  const handleCountryClick = () => {
+    // getCountryFlag(country).then((r) => r.json()).then((res)=>{
+    //   console.log(res)
+    // });
+    setSrc(`https://countryflagsapi.com/png/${country}`);
+    onClose();
+    setCountry("");
+  };
+  return (
+    <>
+      <Button padding={0} width={"30px"} borderRadius={"50%"}>
+        <Image
+          onClick={onOpen}
+          src={src}
+          height={30}
+          width={30}
+          alt="country-logo"
+        />
+      </Button>
+      <Modal isOpen={isOpen} onClose={onClose}>
+        <ModalOverlay />
+        <ModalContent>
+          <ModalHeader>Update Country</ModalHeader>
+          <ModalCloseButton />
+          <ModalBody>
+            {/* <Input
+              placeholder="Enter Country"
+              value={country}
+              onChange={(e) => {
+                setCountry(e.target.value);
+              }}
+            /> */}
+            <Select
+              onChange={(e) => setCountry(e.target.value)}
+              placeholder="Select option"
+            >
+              <option value="in">India</option>
+              <option value="br">Brazil</option>
+              <option value="ae">United Arab Emirates</option>
+              <option value="au">Australia</option>
+              <option value="bd">Bangladesh</option>
+              <option value="jp">Japan</option>
+              <option value="gb-eng">England</option>
+              <option value="iq">Iraq</option>
+            </Select>
+          </ModalBody>
+
+          <ModalFooter>
+            <Button colorScheme="purple" mr={3} onClick={handleCountryClick}>
+              Update
+            </Button>
+            {/* <Button variant="ghost">Secondary Action</Button> */}
+          </ModalFooter>
+        </ModalContent>
+      </Modal>
+    </>
+  );
+}
