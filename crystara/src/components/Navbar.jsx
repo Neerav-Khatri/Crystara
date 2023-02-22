@@ -37,7 +37,7 @@ import Image from "next/image";
 import { IoIosHeart, IoIosPerson, IoIosPin } from "react-icons/io";
 
 import { useEffect, useState } from "react";
-import { BsBag, BsHeart } from "react-icons/bs";
+import { BsBag, BsFillHandbagFill, BsHeart, BsHeartFill } from "react-icons/bs";
 import { getCountryFlag } from "@/redux/ProductPage/action";
 // import styles from '@/styles/Home.module.css'
 // import "../styles/globals.css";
@@ -80,7 +80,7 @@ export default function Navbar() {
       <Flex
         bg={useColorModeValue("#E9D5EF", "gray.100")}
         color={useColorModeValue("gray.600", "white")}
-        minH={"60px"}
+        minH={"5rem"}
         py={{ base: 2 }}
         px={{ base: 4 }}
         borderBottom={1}
@@ -231,33 +231,47 @@ export default function Navbar() {
 
             <Button
               variant="outline"
-              colorScheme="gray"
+              // colorScheme="gray"
               display="flex"
-              gap={2}
+              gap={0}
               alignItems="center"
-              borderWidth={2}
-              borderColor="gray.800"
-              borderRadius="full"
-              //   ref={btnRef}
-              //   onClick={onOpen}
+              // borderWidth={2}
+              // borderColor="gray.800"
+              // borderRadius="full"
             >
-              <BsHeart />
-              {"0"}
+              <BsHeartFill size={"1.5rem"} />
+              <Box
+                bgColor={"purple"}
+                borderRadius="full"
+                width={"1rem"}
+                color={"white"}
+                marginLeft={"-0.7rem"}
+                marginTop={"0.8rem"}
+              >
+                {"3"}
+              </Box>
             </Button>
             <Button
               variant="outline"
-              colorScheme="gray"
+              // colorScheme="gray"
               display="flex"
-              gap={2}
+              gap={0}
               alignItems="center"
-              borderWidth={2}
-              borderColor="gray.800"
-              borderRadius="full"
-              //   ref={btnRef}
-              //   onClick={onOpen}
+              // borderWidth={2}
+              // borderColor="gray.800"
+              // borderRadius="full"
             >
-              <BsBag />
-              {"0"}
+              <BsFillHandbagFill size={"1.5rem"} />
+              <Box
+                bgColor={"purple"}
+                borderRadius="full"
+                width={"1rem"}
+                color={"white"}
+                marginLeft={"-0.7rem"}
+                marginTop={"0.8rem"}
+              >
+                {"3"}
+              </Box>
             </Button>
           </Flex>
         </Stack>
@@ -308,14 +322,19 @@ const DesktopNav = () => {
                   minW={"8xl"}
                 >
                   <Text fontWeight={"bold"}>{navItem.material}</Text>
-                  <Flex align={"center"} justifyContent="space-evenly" >
+                  <Flex align={"center"} justifyContent="space-evenly">
                     <Stack>
                       {navItem.children.map((child) => (
                         <DesktopSubNav key={child.label} {...child} />
                       ))}
                     </Stack>
                     <Stack>
-                      <Image src={navItem.disImage} alt="Display-image" width={500} height={200} />
+                      <Image
+                        src={navItem.disImage}
+                        alt="Display-image"
+                        width={500}
+                        height={200}
+                      />
                     </Stack>
                   </Flex>
                 </PopoverContent>
@@ -529,15 +548,14 @@ const MobileNav = () => {
     >
       {NAV_ITEMS.map((navItem) => (
         <>
-        
-        <MobileNavItem key={navItem.label} {...navItem} />
+          <MobileNavItem key={navItem.label} {...navItem} />
         </>
       ))}
     </Stack>
   );
 };
 
-const MobileNavItem = ({ label, children, href,material }) => {
+const MobileNavItem = ({ label, children, href, material }) => {
   const { isOpen, onToggle } = useDisclosure();
 
   return (

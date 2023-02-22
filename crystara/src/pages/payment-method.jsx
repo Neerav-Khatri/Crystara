@@ -46,23 +46,24 @@ export default function PaymentMethod() {
         className="sticky"
         bg={useColorModeValue("#E9D5EF", "gray.900")}
         px={4}
+        minH={"5rem"}
       >
-        <Flex h={20} alignItems={"center"} gap={10}>
-          <Flex alignItems={"center"}>
+        <Flex  alignItems={"center"}  gap={10}>
+          <Flex alignItems={"center"} >
             <Link>
             <Stack direction={"row"} spacing={7}>
               <HiArrowLeft size={30}  />
             </Stack>
             </Link>
           </Flex>
-          <Box>
+          <Flex align={"center"} justifyContent="center">
             <Image
               src={"/same_color1.png"}
               alt="logo"
               width={150}
               height={70}
             />
-          </Box>
+          </Flex>
         </Flex>
       </Box>
       <Box height={"650px"}>
