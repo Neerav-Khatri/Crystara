@@ -202,6 +202,7 @@ export default function PaymentMethod() {
                     {paymentOptions.map((item) => {
                       return (
                         <Stack
+                        key={item.id}
                           width={"30rem"}
                           padding={2}
                           bg={"Background"}
@@ -265,7 +266,7 @@ export default function PaymentMethod() {
               sampleData.map((item) => {
                 return (
                   <>
-                    <Flex justifyContent={"space-between"}>
+                    <Flex key={item.id} justifyContent={"space-between"}>
                       <Flex align={"center"} gap={"2rem"}>
                         <Box>
                           <Image
@@ -361,12 +362,12 @@ export default function PaymentMethod() {
 }
 
 const paymentOptions=[
-  {name:"Credit Card",value:"1"},
-  {name:"Debit Card",value:"2"},
-  {name:"UPI",value:"3"},
-  {name:"Netbanking",value:"4"},
-  {name:"Cash on Delivery",value:"5"},
-  {name:"Offline Payment",value:"6"},
+  {name:"Credit Card",value:"1",id:1},
+  {name:"Debit Card",value:"2",id:2},
+  {name:"UPI",value:"3",id:3},
+  {name:"Netbanking",value:"4",id:4},
+  {name:"Cash on Delivery",value:"5",id:5},
+  {name:"Offline Payment",value:"6",id:6},
 ]
 const sampleData = [
   {
@@ -377,6 +378,7 @@ const sampleData = [
       "https://banner.caratlane.com/live-images/94329809fcdf408eb7487e69abd78d21.jpg",
     price: 1232,
     offerPrice: 800,
+    id:1
   },
   {
     title: "product 1",
@@ -386,6 +388,7 @@ const sampleData = [
       "https://banner.caratlane.com/live-images/94329809fcdf408eb7487e69abd78d21.jpg",
     price: 1232,
     offerPrice: 800,
+    id:2
   },
   {
     title: "product 1",
@@ -395,5 +398,6 @@ const sampleData = [
       "https://banner.caratlane.com/live-images/94329809fcdf408eb7487e69abd78d21.jpg",
     price: 1232,
     offerPrice: 800,
+    id:3
   },
 ];
