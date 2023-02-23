@@ -118,6 +118,7 @@ a {
   position: sticky;
   top: 0;
   height: 70px;
+  box-shadow:rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
 }
 
 .dropdown-box-content {
@@ -142,19 +143,7 @@ a {
 
 .footer-payment-method {
   position: sticky;
-  top: 500px;
+  top: 35rem;
   z-index: 100000;
 }
 
-.navbar-cart-count {
-  position: absolute;
-  width: 20px;
-  height: 20px;
-  background-color: black;
-  color: white;
-  padding: 2px;
-  text-align: center;
-  border-radius: 50%;
-  left: -8px;
-  top: -8px;
-}
