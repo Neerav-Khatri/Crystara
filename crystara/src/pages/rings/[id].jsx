@@ -1,9 +1,58 @@
-import React from 'react'
 
-const Idrings = () => {
+
+import React from 'react'
+import SingleProductPage from '@/components/singleproductAman'
+
+const Singleproduct = ({data}) => {
+  console.log(data)
+
+  const Post =()=>{
+    axios.post(`https://naughty-frog-cummerbund.cyclic.app/cart`,{data})
+    .then((res)=>console.log(res))
+    .catch((err)=>console.log("error"))
+ }
+
+
   return (
-    <div>Idrings</div>
+    <>
+        {
+           <SingleProductPage {...data} Post={Post}       />
+        }
+    </>
   )
 }
 
-export default Idrings
+export default Singleproduct
+
+
+
+
+
+export async function getStaticPaths(){
+  let res = await fetch(`https://naughty-frog-cummerbund.cyclic.app/rings`)
+  let data = await res.json()
+
+  return{
+    paths: data.map((el)=>(
+         {params: {id:el.id.toString()} }
+    )),
+    fallback:false,
+
+  }
+
+}
+
+
+export async function getStaticProps(context){
+   let {params: {id}} = context
+  let res = await fetch(`https://naughty-frog-cummerbund.cyclic.app/rings/${id}`)
+  let data = await res.json()
+
+  return{  props:{data} }
+
+}
+
+
+
+
+

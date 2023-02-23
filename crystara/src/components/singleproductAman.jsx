@@ -1,4 +1,5 @@
 
+
 import React from 'react'
 import styles from "../styles/demo.module.css"
 import Head from 'next/head'
@@ -11,20 +12,42 @@ import {HiHome} from "react-icons/hi"
 import {RxDimensions} from "react-icons/rx"
 import {SiPurescript} from "react-icons/si"
 import {SlDiamond} from "react-icons/sl"
+import Image from 'next/image'
+import { useRef } from 'react'
+import {useRouter} from 'next/router'
 
 
 
 
-const Demo = () => {
 
-  
+const SingleProductPage = ({src1,src2,src3,video,originalPrice,currentPrice,name,material,Post}) => {
+
+  const router = useRouter() 
+  const arr = [src1,src2,src3]
+
+  const handleAdd=()=>{
+     Post()
+     router.push("/cart")
+  }
+    
+   const ref = useRef(null)
+
+
+   const next =()=>{
+      let width = ref.current.clientWidth
+      ref.current.scrollLeft = ref.current.scrollLeft - width
+   }
+   const prev =()=>{
+      let width = ref.current.clientWidth
+      ref.current.scrollLeft = ref.current.scrollLeft + width
+   }
 
 
   return (
     <>
 
      <Head>
-        <title> demo page </title>
+        <title> SingleRingsPage page </title>
      </Head>
 
 
@@ -32,6 +55,22 @@ const Demo = () => {
   <div className={styles.maindiv} >
      
        <div className={styles.maindiv1}>
+             
+        <div className={styles.carouselDiv} ref={ref} > 
+           <button  className={styles.preBtn}  onClick={next} > <p>&lt;</p> </button>
+           <button  className={styles.nextBtn}  onClick={prev} > <p>&gt;</p> </button> 
+           {
+              arr.map((el)=>{
+               return<Image src={el} width={500} height={400} alt="pic" className={styles.img} />
+              })
+     
+           }
+                <video controls>
+                  <source src={video} type="video/mp4"  />
+                </video>
+
+        </div>
+
 
        </div>
 
@@ -48,8 +87,8 @@ const Demo = () => {
 
        <div className={styles.namediv} >
          <div className={styles.name} >
-           Lasa Diamond Necklace
-           <p>{ `Set in 14 KT Rose Gold(3.580 g) with diamond (0.310 ct ,IJ-SI)`}</p>
+          {name}
+           <p>{ `Set in 14 KT Rose Gold(3.580 g) with ${material} (0.310 ct ,IJ-SI)`}</p>
          </div> 
 
          <div className={styles.wishlisticon} >
@@ -81,11 +120,11 @@ const Demo = () => {
        </div>
 
         <div   className={styles.Pricediv} >
-           <div className={styles.Pricediv1} >₹51,593 </div>
-           <div className={styles.Pricediv2} >₹55,105</div>
+           <div className={styles.Pricediv1} >₹{currentPrice} </div>
+           <div className={styles.Pricediv2} >₹ {originalPrice}</div>
         </div>
 
-        <div className={styles.cartdiv}  >
+        <div className={styles.cartdiv} onClick={handleAdd} >
            <BsFillHandbagFill  className={styles.cartIcon}   />  ADD TO CART
         </div>
         
@@ -207,4 +246,6 @@ const Demo = () => {
   )
 }
 
-export default Demo
+
+
+export default SingleProductPage

@@ -2,7 +2,7 @@
 const nextConfig = {
   reactStrictMode: true,
   images: {
-    domains: [`countryflagsapi.com`, `banner.caratlane.com`],
+    domains: [`countryflagsapi.com`, `banner.caratlane.com`,"cdn.caratlane.com"],
   },
 };
 
