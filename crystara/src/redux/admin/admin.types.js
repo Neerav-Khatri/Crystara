@@ -1,0 +1,6 @@
+export const  PRODUCT_LOADING = "product/loading"
+export const PRODUCT_ERROR = "product/error"
+export const GET_PRODUCT_SUCCESS = "product/getSuccess"
+export const GET_USER_SUCCESS = "user/getSuccess"
+export const DELETE_PRODUCT_SUCCESS = "product/deleteSuccess"
+export const DELETE_USER_SUCCESS = "user/deleteSuccess"

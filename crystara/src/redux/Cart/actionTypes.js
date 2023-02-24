@@ -1,5 +1,8 @@
 
-export const GET_CART = "cart/get"
-export const POST_CART = "cart/post"
+export const TotalPrice = "cart/price"
+export const TotalSaving = "cart/save"
+export const TotalItem = "cart/item"
+export const Get = "cart/get"
+
 export const DEL_CART = "cart/del"
 

@@ -1,5 +1,6 @@
 import React from 'react'
 import SingleProductPage from '@/components/singleproductAman'
+import axios from "axios"
 
 const Singleproduct = ({data}) => {
   console.log(data)

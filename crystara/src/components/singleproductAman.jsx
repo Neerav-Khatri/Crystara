@@ -60,8 +60,8 @@ const SingleProductPage = ({src1,src2,src3,video,originalPrice,currentPrice,name
            <button  className={styles.preBtn}  onClick={next} > <p>&lt;</p> </button>
            <button  className={styles.nextBtn}  onClick={prev} > <p>&gt;</p> </button> 
            {
-              arr.map((el)=>{
-               return<Image src={el} width={500} height={400} alt="pic" className={styles.img} />
+              arr.map((el,i)=>{
+               return<Image key={i} src={el} width={500} height={400} alt="pic" className={styles.img} />
               })
      
            }
@@ -75,9 +75,6 @@ const SingleProductPage = ({src1,src2,src3,video,originalPrice,currentPrice,name
        </div>
 
 
-
-
-     
     <div className={styles.maindiv2}>
 
           <div className={styles.stardiv} >
