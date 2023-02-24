@@ -7,6 +7,7 @@ const nextConfig = {
       `banner.caratlane.com`,
       "cdn.caratlane.com",
       `web-assets.payu.in`,
+      `cdn.caratlane.com`,
     ],
   },
 };
