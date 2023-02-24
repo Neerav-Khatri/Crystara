@@ -6,11 +6,10 @@ const nextConfig = {
     domains: [
       `countryflagsapi.com`,
       `banner.caratlane.com`,
+      "cdn.caratlane.com",
       `web-assets.payu.in`,
-      "cdn.caratlane.com"
-    ],
-
+]
   },
 };
 
-module.exports = nextConfig
+module.exports = nextConfig;
