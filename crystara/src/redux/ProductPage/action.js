@@ -28,12 +28,18 @@ export const handleError = () => {
   return {type: types.isERROR};
 }
 
-export const getProducts = async(dispatch) => {
+export const getProducts = () => async(dispatch) => {
   dispatch(handleLoading);
-  await axios.get(`https://naughty-frog-cummerbund.cyclic.app/arrival`)
+  await axios.get(`https://charming-bee-pea-coat.cyclic.app/arrival`)
   .then((res) => {
     dispatch({type: types.GET_PRODUCT, payload: res.data})
   }).catch((error) => {
     dispatch(handleError);
   })
 }
+
+// export const postProduct = (data) => {
+//   axios.post(`https://naughty-frog-cummerbund.cyclic.app/wishlist`, data)
+//   .then((res) => console.log(res))
+//   .catch((error) => console.log(error));
+// }
