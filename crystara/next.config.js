@@ -6,6 +6,7 @@ const nextConfig = {
       `countryflagsapi.com`,
       `banner.caratlane.com`,
       `web-assets.payu.in`,
+      `cdn.caratlane.com`,
     ],
   },
 };
