@@ -4,12 +4,13 @@ import { useState } from "react";
 import { AiOutlineHeart, AiFillHeart } from "react-icons/ai";
 import { FcLike } from "react-icons/fc";
 
-export default function ProductCard({ data }) {
+export default function ProductCard({ data, handleWishAdd }) {
     const [liked, setLiked] = useState(false);
     const toast = useToast();
 
     const handleAddWishlist = () => {
         setLiked(true);
+        handleWishAdd(data);
         toast({
             title: "Product added to Wishlist",
             status: "success",
