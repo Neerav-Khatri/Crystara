@@ -15,7 +15,7 @@ const Dashboard = () => {
        {/* STACKS OF SALES AND ORDERS */}
 
       <Grid templateColumns="repeat(3, 1fr)" gap={10} mt={5} p={10}>
-        <GridItem w="100%" h="250" bg="cyan.100">
+        <GridItem w="100%" h="250" bg="purple.100" color='#5d1059'>
           <Stat textAlign={"center"} p={5} lineHeight={10}>
             <StatLabel fontSize={20} fontWeight={"bold"}>
               Active Users
@@ -31,7 +31,7 @@ const Dashboard = () => {
             </StatNumber>
           </Stat>
         </GridItem>
-        <GridItem w="100%" h="250" bg="cyan.100">
+        <GridItem w="100%" h="250" bg="purple.100" color='#5d1059'>
           <Stat textAlign={"center"} p={5} lineHeight={10}>
             <StatLabel fontSize={20} fontWeight={"bold"}>
               Last Months Sales
@@ -47,9 +47,9 @@ const Dashboard = () => {
             </StatNumber>
           </Stat>
         </GridItem>
-        <GridItem w="100%" h="250" bg="cyan.100">
+        <GridItem w="100%" h="250" bg="purple.100" color='#5d1059'>
           <Stat textAlign={"center"} p={5} lineHeight={10}>
-            <StatLabel fontSize={20} fontWeight={"bold"}>
+            <StatLabel fontSize={20} fontWeight={"bold"} >
               Orders Completed This Months
             </StatLabel>
             <StatNumber fontSize={20} fontWeight={"bold"}>

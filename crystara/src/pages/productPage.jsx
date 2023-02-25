@@ -1,22 +1,32 @@
 import ProductCard from '@/components/ProductCard';
-import { getProducts } from '@/redux/ProductPage/action';
-import { productReducer } from '@/redux/ProductPage/reducer';
+import { getProducts, postProduct } from '@/redux/ProductPage/action';
 import { HamburgerIcon } from '@chakra-ui/icons';
 import { Box, Checkbox, CheckboxGroup, Code, Flex, Grid, IconButton, Menu, MenuButton, MenuItem, MenuList, Select, Show, Stack, Text } from '@chakra-ui/react';
+import axios from 'axios';
 import Image from 'next/image';
-import React, { useEffect } from 'react'
+import { useRouter } from 'next/router';
+import React, { useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux';
 import styles from "../styles/product.module.css";
 
 const ProductPage = () => {
     const dispatch = useDispatch();
+    const [material, setMaterial] = useState("");
     const {product} = useSelector((store) => store.productReducer);
+    const router = useRouter();
 
     useEffect(() => {
-        dispatch(getProducts);
-    },[])
+        dispatch(getProducts());
+    },[material])
 
-    console.log(product);
+    // const handleWishAdd = (data) => {
+    //     // postProduct(data);
+    //     axios.post(`https://naughty-frog-cummerbund.cyclic.app/wishlist`, data)
+    //     .then((res) => console.log(res))
+    //     .catch((error) => console.log(error));
+    // }
+
+   
 
     return (
     <div>
@@ -63,6 +73,8 @@ const ProductPage = () => {
 
         {/* Filter and card section */}
 
+        <button onClick={() => router.push('/productPage?material=Pearls')}>Checking</button>
+
         <Box border="1px solid red" p="10px">
             <Flex p="10px" justifyContent={"space-around"}>
                 <Box w="22%" >
@@ -79,7 +91,7 @@ const ProductPage = () => {
                                 </Stack>
                             </CheckboxGroup>
                             <br/><hr/><br/>
-                            <CheckboxGroup colorScheme='green'>
+                            <CheckboxGroup colorScheme='green' onChange={(e) => setMaterial(e)}>
                                 <Text fontSize="1.2vw" fontWeight="semibold" mb="10px">Material</Text>
                                 <Stack spacing="2" direction="column">
                                     <Checkbox value='Diamond'><Text className={styles.filterCheck}>Diamond</Text></Checkbox>

@@ -11,8 +11,8 @@ const Navbar = () => {
         <Breadcrumb fontWeight='medium' fontSize='xl'
         border="1px solid pink"
         p="5"
-        bgColor='yellow.50'
-        color='red.600'
+        bgColor='purple.100'
+        color='#5d1059'
         >
               <BreadcrumbItem>
                 <Link href='/admin/dashboard'>Dashboard</Link>
@@ -27,9 +27,6 @@ const Navbar = () => {
 
             <BreadcrumbItem isCurrentPage>
                 <Link href='/admin/user'>User</Link>
-            </BreadcrumbItem>
-            <BreadcrumbItem isCurrentPage>
-                <Link href='/admin/order'>Order</Link>
             </BreadcrumbItem>
         </Breadcrumb>
     )
