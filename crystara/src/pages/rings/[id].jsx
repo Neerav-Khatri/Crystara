@@ -5,10 +5,15 @@ import SingleProductPage from '@/components/singleproductAman'
 import axios from "axios"
 import Footer from '@/components/Footer'
 import Description from '@/components/description'
+import Navbar from '@/components/Navbar'
+import { useSelector } from 'react-redux'
 
 
 const Singleproduct = ({data}) => {
   console.log(data)
+
+  const {Price, Saving} = useSelector((store) => store.cartReducer);
+  console.log(Price, Saving);
 
   const Post =()=>{
     axios.post(`http://localhost:8080/cart`,data)
@@ -19,7 +24,7 @@ const Singleproduct = ({data}) => {
 
   return (
     <>
-
+        <Navbar />
       
         {
            <SingleProductPage {...data} Post={Post}   />

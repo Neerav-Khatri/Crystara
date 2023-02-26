@@ -17,7 +17,7 @@ const Singleproduct = ({data}) => {
 
   return (
     <>
-       
+       <Navbar />
         
         {
            <SingleProductPage {...data}  Post={Post}      />

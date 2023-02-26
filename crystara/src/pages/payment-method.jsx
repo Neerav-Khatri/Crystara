@@ -78,7 +78,7 @@ export default function PaymentMethod({ data }) {
       >
         <Flex alignItems={"center"} gap={10}>
           <Flex alignItems={"center"}>
-            <Link>
+            <Link href={"/cart"}>
               <Stack direction={"row"} spacing={7}>
                 <HiArrowLeft size={30} />
               </Stack>
@@ -239,15 +239,16 @@ export default function PaymentMethod({ data }) {
                     })}
                   </RadioGroup>
                   <br />
-                  <Link textDecoration={"none"} href="/paymentoptions">
+                  <Link textDecoration={"none"} outline={"none"} href="/paymentoptions">
                     <Button
                       bgColor={"rgb(206,89,233)"}
                       color="white"
                       width={"20rem"}
                       _hover={"none"}
                       textDecoration="none"
+
                     >
-                      Pay ₹{Price}
+                      Pay ₹{Price-Saving}
                     </Button>
                   </Link>
                   <Divider />

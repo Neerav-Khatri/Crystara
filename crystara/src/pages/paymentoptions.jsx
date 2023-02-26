@@ -17,7 +17,16 @@ import { RiArrowDropRightLine } from "react-icons/ri";
 import { useSelector } from "react-redux";
 
 const PaymentOptions = () => {
-  const totalCartPrice=useSelector((store)=>store.cartReducer.Price)
+  // const { Price, Saving, Item, cart } = useSelector((state) => {
+  //   return {
+  //     Price: state.cartReducer.Price,
+  //     Saving: state.cartReducer.Saving,
+  //     Item: state.cartReducer.Item,
+  //     cart: state.cartReducer.cart,
+  //   };
+  // })
+  const {Price, Saving} = useSelector((store) => store.cartReducer);
+  console.log(Price, Saving);
   return (
     <Box bgColor={"gray.100"}>
       <Center
@@ -65,7 +74,7 @@ const PaymentOptions = () => {
                   fontWeight: "bold",
                 }}
               >
-                ₹{totalCartPrice}
+                ₹{Price-Saving}
               </p>
             </Flex>
             <br />
@@ -86,7 +95,7 @@ const PaymentOptions = () => {
               {paymentOptions.map((item) => {
                 return (
                   <>
-                    <Link href={item.url}>
+                    <Link href={item.url} key={item.id}>
                       <Flex
                         cursor={"pointer"}
                         paddingTop={"1.5rem"}

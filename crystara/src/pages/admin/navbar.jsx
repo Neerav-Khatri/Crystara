@@ -8,7 +8,7 @@ import {
 } from '@chakra-ui/react'
 const Navbar = () => {
     return (
-        <Breadcrumb fontWeight='medium' fontSize='xl'
+        <Breadcrumb fontWeight='medium' fontSize={{base:'sm', md:"xl"}}
         border="1px solid pink"
         p="5"
         bgColor='purple.100'
@@ -27,6 +27,10 @@ const Navbar = () => {
 
             <BreadcrumbItem isCurrentPage>
                 <Link href='/admin/user'>User</Link>
+            </BreadcrumbItem>
+            
+            <BreadcrumbItem isCurrentPage>
+                <Link href='/'>Home</Link>
             </BreadcrumbItem>
         </Breadcrumb>
     )

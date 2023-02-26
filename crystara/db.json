@@ -1668,7 +1668,24 @@
     }
   ],
   "wishlist": [],
-  "cart": [],
+
+ 
+
+  "cart": [
+    {
+      "src1": "https://cdn.caratlane.com/media/catalog/product/J/R/JR03769-YGP900_5_lar.jpg",
+      "src2": "https://cdn.caratlane.com/media/catalog/product/J/R/JR03769-YGP900_4_lar.jpg",
+      "tag": "BESTSELLER",
+      "currentPrice": 20280,
+      "originalPrice": 20676,
+      "name": "Intertwined Glim Diamond Ring",
+      "material": "Diamond",
+      "video": "https://cdn.caratlane.com/media/catalog/product/J/R/JR03769-YGP900_16_video.mp4",
+      "src3": "https://cdn.caratlane.com/media/catalog/product/J/R/JR03769-YGP900_3_lar.jpg",
+      "id": 2
+    }
+  ],
+
   "user": [
     {
       "id": 1,
@@ -1678,6 +1695,15 @@
       "number": "9876543211",
       "email": "neerav@gmail.com",
       "password": "123456"
+    },
+    {
+      "first_name": "Rahul",
+      "last_name": "Kumar",
+      "number": "123456789",
+      "email": "rahul@gmail.com",
+      "password": "14753",
+      "gender": "male",
+      "id": 2
     }
   ],
   "admin": [

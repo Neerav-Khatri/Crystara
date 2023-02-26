@@ -9,6 +9,8 @@ import axios from "axios"
 import { useDispatch,useSelector } from 'react-redux'
 import { TotalpriceFound,TotalsavingFound,TotalItemFound,GetCart,del } from '@/redux/Cart/action'
 import { useRouter } from 'next/router'
+import Navbar from '@/components/Navbar'
+import Link from 'next/link'
 
 
 
@@ -132,6 +134,8 @@ const Cart = ({data}) => {
      <Head>
         <title> cart page </title>
      </Head>
+
+     <Navbar />
     
       <div className={styles.cartmainDiv}  >
 
@@ -222,7 +226,7 @@ const Cart = ({data}) => {
               </div>
           </div>
             
-            <button className={styles.checkout} > <FaLock className={styles.lockIcon2} /> Checkout Securely</button>
+            <Link href={"/payment-method"}><button className={styles.checkout} > <FaLock className={styles.lockIcon2} /> Checkout Securely</button></Link>
 
         </div>
               
