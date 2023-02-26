@@ -101,7 +101,7 @@ const Bracelets = () => {
         <Box>
             <Flex direction="column">
                 <Box>
-                    <Image src="https://banner.caratlane.com/live-images/dab8c9bccb50479fbad968e7ea6ea450.webp" alt="Banner Image" width={1920} height={560} priority={true} />
+                    <Image src="https://banner.caratlane.com/live-images/dab8c9bccb50479fbad968e7ea6ea450.webp" alt="Banner Image" width={1920} height={560}  />
                 </Box>
                 <Flex bgColor="#f2d0f7" p="1rem" justifyContent="space-between">
                     <Box>
