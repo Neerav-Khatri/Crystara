@@ -126,6 +126,7 @@ a {
   border-top: none;
   border-left: none;
   border-right: none;
+  padding: 0.5rem;
 }
 
 .dropdown-box {

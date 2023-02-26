@@ -4,7 +4,7 @@ import { useState } from "react";
 import { AiOutlineHeart, AiFillHeart } from "react-icons/ai";
 import { FcLike } from "react-icons/fc";
 
-export default function ProductCard({ data, handleWishAdd }) {
+export default function ProductCard({ data, handleWishAdd, handleWishDelete, handleDetailPage }) {
     const [liked, setLiked] = useState(false);
     const toast = useToast();
 
@@ -21,6 +21,7 @@ export default function ProductCard({ data, handleWishAdd }) {
 
     const handleRemoveWishlist= () => {
         setLiked(false);
+        handleWishDelete(data.id);
         toast({
             title: "Product removed from Wishlist",
             status: "info",
@@ -33,7 +34,7 @@ export default function ProductCard({ data, handleWishAdd }) {
         <div>
             <Flex direction="column" boxShadow="rgba(0, 0, 0, 0.24) 0px 3px 8px;">
                 <Box pos="relative">
-                    <Image w="100%" src={data.src1} alt="image"  />
+                    <Image w="100%" src={data.src1} alt="image"   onClick={() => handleDetailPage(data.id)}/>
                 {data.tag!==undefined ? <Badge color={"#786c84"} bgColor={"#f2debc"} alt="tag" w="7vw" pos="absolute" top="10px" left={"10px"} fontSize={"1vw"}>{data.tag}</Badge> : null}
                     <Box pos="absolute" right="20px" bottom="20px" _hover={{cursor: "pointer"}} >{liked ? <FcLike size="2vw" onClick={handleRemoveWishlist}/> : <AiOutlineHeart size="2vw" onClick={handleAddWishlist}/>}</Box>
                 </Box>   

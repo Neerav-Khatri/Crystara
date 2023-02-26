@@ -1,3 +1,4 @@
+
 import React from 'react'
 import axios from "axios"
 import styles from "../styles/wishList.module.css"
@@ -94,3 +95,4 @@ const WishList = () => {
 }
 
 export default WishList
+

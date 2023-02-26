@@ -5,9 +5,7 @@ import * as types from "./actionTypes";
 // Navbar functions
 
 export const getAllProductsNavbarAPI=async()=>{
-    let res = await axios.get(
-      `https://naughty-frog-cummerbund.cyclic.app/collection`
-    );
+    let res = await axios.get(`http://localhost:8080/collection`);
     return res.data
 }
 
@@ -28,18 +26,12 @@ export const handleError = () => {
   return {type: types.isERROR};
 }
 
-export const getProducts = () => async(dispatch) => {
+export const getProducts = (type) => async(dispatch) => {
   dispatch(handleLoading);
-  await axios.get(`https://charming-bee-pea-coat.cyclic.app/arrival`)
+  await axios.get(`http://localhost:8080/${type}`)
   .then((res) => {
     dispatch({type: types.GET_PRODUCT, payload: res.data})
   }).catch((error) => {
     dispatch(handleError);
   })
 }
-
-// export const postProduct = (data) => {
-//   axios.post(`https://naughty-frog-cummerbund.cyclic.app/wishlist`, data)
-//   .then((res) => console.log(res))
-//   .catch((error) => console.log(error));
-// }

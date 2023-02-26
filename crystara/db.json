@@ -204,7 +204,9 @@
       "currentPrice": 83098,
       "originalPrice": 84968,
       "name": "Carson Diamond Ring for Men",
-      "material": "Diamond ",
+
+      "material": "Diamond",
+
       "video": "https://cdn.caratlane.com/media/catalog/product/J/R/JR00872-WGP900_16_video.mp4",
       "src3": "https://cdn.caratlane.com/media/catalog/product/J/R/JR00872-WGP900_4_lar.jpg",
       "id": 1
@@ -216,7 +218,9 @@
       "currentPrice": 20280,
       "originalPrice": 20676,
       "name": "Intertwined Glim Diamond Ring",
-      "material": "Diamond ",
+
+      "material": "Diamond",
+
       "video": "https://cdn.caratlane.com/media/catalog/product/J/R/JR03769-YGP900_16_video.mp4",
       "src3": "https://cdn.caratlane.com/media/catalog/product/J/R/JR03769-YGP900_3_lar.jpg",
       "id": 2
@@ -549,7 +553,8 @@
       "currentPrice": 38087,
       "originalPrice": 42166,
       "name": "Amala Pearl Stud Earrings",
-      "material": "Pearl",
+
+      "material": "Pearls",
       "video": "https://cdn.caratlane.com/media/catalog/product/J/E/JE06765-1RP9P0_16_video.mp4",
       "src3": "https://cdn.caratlane.com/media/catalog/product/J/E/JE06765-1RP9P0_3_lar.jpg",
       "id": 12
@@ -785,7 +790,11 @@
       "tag": "TRENDING",
       "currentPrice": 13697,
       "name": "Aisha Cutout Charm Pearl Bracelet",
-      "material": "Pearl",
+
+
+
+      "material": "Pearls",
+
       "video": "https://cdn.caratlane.com/media/catalog/product/U/T/UT00650-YG00P0_16_video.mp4",
       "src3": "https://cdn.caratlane.com/media/catalog/product/U/T/UT00650-YG00P0_3_lar.jpg",
       "id": 14
@@ -1667,31 +1676,9 @@
       "id": 72
     }
   ],
-  "wishlist": [
-    {
-      "src1": "https://cdn.caratlane.com/media/catalog/product/J/R/JR07381-1RP600_3_lar.jpg",
-      "src2": "https://cdn.caratlane.com/media/catalog/product/J/R/JR07381-1RP600_8_lar.jpg",
-      "currentPrice": 58639,
-      "originalPrice": 65057,
-      "name": "Scarlett Sparkling Diamond Ring",
-      "material": "Diamond",
-      "video": "https://cdn.caratlane.com/media/catalog/product/J/R/JR07381-1RP600_16_video.mp4",
-      "src3": "https://cdn.caratlane.com/media/catalog/product/J/R/JR07381-1RP600_4_lar.jpg",
-      "id": 5
-    },
-    {
-      "src1": "https://cdn.caratlane.com/media/catalog/product/J/R/JR03769-YGP900_5_lar.jpg",
-      "src2": "https://cdn.caratlane.com/media/catalog/product/J/R/JR03769-YGP900_4_lar.jpg",
-      "tag": "BESTSELLER",
-      "currentPrice": 20280,
-      "originalPrice": 20676,
-      "name": "Intertwined Glim Diamond Ring",
-      "material": "Diamond ",
-      "video": "https://cdn.caratlane.com/media/catalog/product/J/R/JR03769-YGP900_16_video.mp4",
-      "src3": "https://cdn.caratlane.com/media/catalog/product/J/R/JR03769-YGP900_3_lar.jpg",
-      "id": 2
-    }
-  ],
+
+  "wishlist": [],
+
   "cart": [],
   "user": [
     {
@@ -1707,7 +1694,7 @@
   "admin": [
     {
       "id": 1,
-      "adminId": "458796213",
+       "adminId":"454",
       "name": "Kunal",
       "email": "kunal123@gmail.com",
       "password": "789456"
