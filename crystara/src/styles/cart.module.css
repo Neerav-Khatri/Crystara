@@ -244,6 +244,20 @@
     color:white;
   }
 
+  .cartfooter{
+    min-height: 6rem;
+    width: 100%;
+    background-color: rgb(246,239,246);
+    display: flex;
+    align-items: center;
+  }
+  .P26{
+    font-size: 1.2rem;
+    font-weight: 600;
+    color: rgb(86, 83, 83);
+    padding-left: 1rem;
+  }
+
 
 
 

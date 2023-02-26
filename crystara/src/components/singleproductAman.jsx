@@ -3,7 +3,7 @@
 import React from 'react'
 import styles from "../styles/demo.module.css"
 import Head from 'next/head'
-import {AiFillStar,AiOutlineHeart} from "react-icons/ai"
+import {AiFillStar} from "react-icons/ai"
 import {IoMdHeartEmpty } from "react-icons/Io"
 import {GoLocation} from "react-icons/go"
 import {BsBag,BsFillHandbagFill,BsArrowRight,BsApple} from "react-icons/bs"
@@ -15,6 +15,8 @@ import {SlDiamond} from "react-icons/sl"
 import Image from 'next/image'
 import { useRef } from 'react'
 import {useRouter} from 'next/router'
+import { useDispatch,useSelector } from 'react-redux'
+import { GetPin } from '@/redux/Cart/action'
 
 
 
@@ -22,11 +24,24 @@ import {useRouter} from 'next/router'
 
 const SingleProductPage = ({src1,src2,src3,video,originalPrice,currentPrice,name,material,Post}) => {
 
+  const dispatch = useDispatch()
+  const Pincode = useSelector((state)=>state.cartReducer.Pincode)
+  console.log(Pincode)
+
+  const [pin,setpin] = React.useState('')
+
+  const handlechange=(e)=>{
+    setpin(e.target.value)
+   
+  }
+ 
+
   const router = useRouter() 
   const arr = [src1,src2,src3]
 
   const handleAdd=()=>{
      Post()
+     dispatch(GetPin(pin))
      router.push("/cart")
   }
     
@@ -41,6 +56,7 @@ const SingleProductPage = ({src1,src2,src3,video,originalPrice,currentPrice,name
       let width = ref.current.clientWidth
       ref.current.scrollLeft = ref.current.scrollLeft + width
    }
+ 
 
 
   return (
@@ -97,11 +113,11 @@ const SingleProductPage = ({src1,src2,src3,video,originalPrice,currentPrice,name
        
        <div className={styles.deliveryPtag} >
         <div>Delivery & Store Details</div>
-        <div  className={styles.locationP} >Locate Me</div>
+        <div  className={styles.locationP}  >Locate Me</div>
        </div>
 
        <div className={styles.inputdiv} >
-        <input type="text"  className={styles.input} />
+        <input type="text"  className={styles.input} value={pin} onChange={handlechange}  />
         <GoLocation  className={styles.locationIcon} />
        </div>
 
@@ -118,7 +134,11 @@ const SingleProductPage = ({src1,src2,src3,video,originalPrice,currentPrice,name
 
         <div   className={styles.Pricediv} >
            <div className={styles.Pricediv1} >₹{currentPrice} </div>
-           <div className={styles.Pricediv2} >₹ {originalPrice}</div>
+           {
+           originalPrice!=''?
+           <div className={styles.Pricediv2} >₹ {originalPrice}</div> : <div className={styles.Pricediv2} ></div>
+          }
+        
         </div>
 
         <div className={styles.cartdiv} onClick={handleAdd} >

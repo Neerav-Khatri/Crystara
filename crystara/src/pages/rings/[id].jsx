@@ -3,12 +3,15 @@
 import React from 'react'
 import SingleProductPage from '@/components/singleproductAman'
 import axios from "axios"
+import Footer from '@/components/Footer'
+import Description from '@/components/description'
+
 
 const Singleproduct = ({data}) => {
   console.log(data)
 
   const Post =()=>{
-    axios.post(`http://localhost:8080/cart`,{data})
+    axios.post(`http://localhost:8080/cart`,data)
     .then((res)=>console.log(res))
     .catch((err)=>console.log("error"))
  }
@@ -16,9 +19,14 @@ const Singleproduct = ({data}) => {
 
   return (
     <>
+
+      
         {
            <SingleProductPage {...data} Post={Post}   />
         }
+
+        <Description />
+        <Footer />
     </>
   )
 }

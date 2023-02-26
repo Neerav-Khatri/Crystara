@@ -8,78 +8,124 @@ import {FaLock} from "react-icons/fa"
 import axios from "axios"
 import { useDispatch,useSelector } from 'react-redux'
 import { TotalpriceFound,TotalsavingFound,TotalItemFound,GetCart,del } from '@/redux/Cart/action'
+import { useRouter } from 'next/router'
 
 
 
 const Cart = ({data}) => {
 
-   const dispatch = useDispatch()
 
-  const {Price ,Saving, Item,cart} = useSelector((state)=>{
+   const [maindata,setmaindata] = React.useState([])
+   const dispatch = useDispatch()
+   const router = useRouter()
+
+   const {Price ,Saving, Item,cart,Pincode,wishlistItem} = useSelector((state)=>{
    return{
          Price : state.cartReducer.Price,
          Saving: state.cartReducer.Saving,
          Item:   state.cartReducer.Item,
-         cart:   state.cartReducer.cart
+         cart:   state.cartReducer.cart,
+         Pincode: state.cartReducer.Pincode,
+         wishlistItem: state.cartReducer.wishlistItem
+
    }
   })
-
-   const totalitem = data.length
+   console.log(wishlistItem)
+   const totalitem = maindata.length
 
    const ref = React.useRef([])
  
    const [sum,setsum]= React.useState(0)
+   const [originalsum,setoriginalsum]=React.useState(0)
    const [discount,setdiscount] = React.useState(0)
 
    React.useEffect(()=>{
-       let sum1=0
-       let sum2=0
-       for(let i=0;i<data.length;i++){
-        sum1+= data[i].data.currentPrice*ref.current[i].value
-        if(data[i].data.originalPrice!=''){
-           sum2+= (Number(data[i].data.originalPrice)-Number(data[i].data.currentPrice))*ref.current[i].value
-        }
-       } 
-         setsum(sum1)
-         dispatch(TotalpriceFound(sum1))
-         setdiscount(sum2)
-         dispatch(TotalsavingFound(sum2))
-         dispatch(TotalItemFound(totalitem))
-         dispatch(GetCart(data))
+    setmaindata(data)
    },[])
+
+
+
+   React.useEffect(()=>{
+    let sum1=0
+    let sum2=0
+    let sum3=0
+    if(maindata.length!=0){
+    for(let i=0;i<maindata.length;i++){
+      sum1+= maindata[i].currentPrice*ref.current[i].value
+      sum3+= maindata[i].originalPrice*ref.current[i].value
+     
+     if(maindata.length!=0 && maindata[i].originalPrice!=''){
+       sum2+= (Number(maindata[i].originalPrice)-Number(maindata[i].currentPrice))*ref.current[i].value
+    }
+    } 
+   
+      setsum(prev=>prev+sum1)
+      setoriginalsum(prev=>prev+sum3)
+      dispatch(TotalpriceFound(sum1))
+      setdiscount(prev=>prev+sum2)
+      dispatch(TotalsavingFound(sum2))
+      dispatch(TotalItemFound(totalitem))
+   }
+
+   },[maindata.length])
+
    
    const handlechange=()=>{
     let sum1=0
     let sum2=0
-    for(let i=0;i<data.length;i++){
-     sum1+= data[i].data.currentPrice*ref.current[i].value
+    let sum3=0
     
-    if(data[i].data.originalPrice!=''){
-      sum2+= (Number(data[i].data.originalPrice)-Number(data[i].data.currentPrice))*ref.current[i].value
+    for(let i=0;i<maindata.length;i++){
+     sum1+= maindata[i].currentPrice*ref.current[i].value
+     sum3+= maindata[i].originalPrice*ref.current[i].value
+    
+    if(maindata[i].data.originalPrice!=''){
+      sum2+= (Number(maindata[i].originalPrice)-Number(maindata[i].currentPrice))*ref.current[i].value
    }
   }
       setsum(sum1)
       dispatch(TotalpriceFound(sum1))
+      setoriginalsum(sum3)
       setdiscount(sum2)
       dispatch(TotalsavingFound(sum2))
       dispatch(TotalItemFound(totalitem))
    }
     
-   // console.log(sum,discount)
-     
-  //  const Getagain=()=>{
-  //   axios.get(`http://localhost:8080/cart`)
-  //   .then((res)=>dispatch(GetCart(res.data)))
-  //   .catch((err)=>console.log("error"))
-  //  }
+
+      const Renderdata=()=>{
+        axios.get(`http://localhost:8080/cart`)
+        .then((res)=>setmaindata(res.data))
+        .catch((err)=>console.log("error"))
+      }
+  
+      const del=(id)=>{
+       axios.delete(`http://localhost:8080/cart/${id}`)
+      .then((res)=>  Renderdata() )
+      .catch((err)=>console.log("error"))
+    }
 
       const delfun=(id)=>{
-          dispatch(del(id))
-          console.log(id)
-         
+          del(id)
       }
- 
-      console.log(cart)
+    //  console.log(maindata) 
+
+      const wishlistPost=(id)=>{
+          let dummy = maindata.filter((el)=>{
+              return el.id==id
+          })
+          console.log(dummy[0])
+  
+          let data = dummy[0]
+         
+
+        axios.post(`http://localhost:8080/wishlist`,data)
+        .then((res)=>console.log(res))
+        .catch((err)=>console.log("error"))
+        delfun(id)
+        router.push("/wishList")
+
+      }
+   
 
    return (
     <>
@@ -103,14 +149,14 @@ const Cart = ({data}) => {
              {
 
 
-               data.map((el,i)=>{
+               maindata.map((el,i)=>{
 
                 return <div className={styles.singleCart} key={el.id} >
                         <div className={styles.singleCart1} >
-                           <Image src={el.data.src1} width={250} height={550} alt="pic"  />
+                           <Image src={el.src1} width={250} height={550} alt="pic" priority={true}  />
                         </div>
                        <div className={styles.singleCart2} >
-                        <p className={styles.P14} > {el.data.name}</p>
+                        <p className={styles.P14} > {el.name}</p>
                         <p className={styles.P16}  >UT00702-1Y0000</p>
                         <p className={styles.P17} >Quantity : 
                         <select className={styles.select} ref={(ele)=> {ref.current[i]=ele}} onClick={()=>handlechange(i)}   > 
@@ -122,11 +168,11 @@ const Cart = ({data}) => {
                          </select>  </p>
                            
                          <p className={styles.P18} >Delivery by - Tomorrow</p>
-                         <p> <span  className={styles.span1} >₹{~~el.data.currentPrice}</span>  <span className={styles.span2} >₹{~~el.data.originalPrice}</span>    <span className={styles.span3} >Save ₹{(~~el.data.originalPrice)-(~~el.data.currentPrice)}</span>   </p>
+                         <p> <span  className={styles.span1} >₹{~~el.currentPrice}</span>  <span className={styles.span2} >₹{~~el.originalPrice}</span>    <span className={styles.span3} >Save ₹{(~~el.originalPrice)-(~~el.currentPrice)}</span>   </p>
                      </div>
                    <div className={styles.singleCart3} >
-                    <button className={styles.removeBtn} onClick={()=>delfun(i+1)} > Remove</button>
-                    <button className={styles.wishListBtn}  > Move to Wishlist</button>
+                    <button className={styles.removeBtn} onClick={()=>delfun(el.id)} > Remove</button>
+                    <button className={styles.wishListBtn} onClick={()=>wishlistPost(el.id)}  > Move to Wishlist</button>
                   </div>
                 </div>
 
@@ -144,7 +190,7 @@ const Cart = ({data}) => {
           </div>
           
           <div className={styles.coupondiv2} > 
-            <p  className={styles.P19} > <BsTruck className={styles.percentIcon2}  /> <span  className={styles.available2} >Deliver to </span>  - 229021  </p>
+            <p  className={styles.P19} > <BsTruck className={styles.percentIcon2}  /> <span  className={styles.available2} >Deliver to </span>  - {Pincode}  </p>
           </div>
          
           <p className={styles.P20} >Order Summary</p>
@@ -152,7 +198,7 @@ const Cart = ({data}) => {
           <div className={styles.orderdiv} >
               <div className={styles.orderdiv1} >
                 <div className={styles.orderInsideDiv1} >Subtotal</div>
-                <div   >₹ 48956</div>
+                <div   >₹ {originalsum}</div>
               </div>
 
               <div className={styles.orderdiv1} >
@@ -182,10 +228,13 @@ const Cart = ({data}) => {
               
 
       </div>
-
+       <div className={styles.cartfooter} >
+          <p className={styles.P26} >Contact Us: +91-44-42935000 (Helpline) | contactus@caratlane.com</p>
+       </div>
     </>
   )
 }
+
 
 
 export async function getServerSideProps(){

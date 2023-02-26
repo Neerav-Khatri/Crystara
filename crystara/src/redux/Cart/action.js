@@ -33,10 +33,17 @@ export const Deldata=()=>{
     }
 }
 
+export const GetPin=(payload)=>{
+    return {
+        type:types.Pin,
+        payload
+    }
+}
+export const Getwish=(payload)=>{
+    return {
+        type:types.wishlist,
+        payload
+    }
+}
 
 
-export const del=(id)=>async(dispatch)=>{
-    await axios.delete(`http://localhost:8080/cart/${id}`)
-    .then((res)=> dispatch(GetCart(res.data)))
-    .catch((err)=>console.log("error"))
-  }

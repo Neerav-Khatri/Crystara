@@ -1,21 +1,32 @@
 import React from 'react'
 import SingleProductPage from '@/components/singleproductAman'
 import axios from "axios"
+import Description from '@/components/description'
+import Footer from '@/components/Footer'
+import Head from 'next/head'
+import Navbar from '@/components/Navbar'
 
 const Singleproduct = ({data}) => {
   console.log(data)
 
    const Post =()=>{
-      axios.post(`https://naughty-frog-cummerbund.cyclic.app/cart`,{data})
+      axios.post(`http://localhost:8080/cart`,data)
       .then((res)=>console.log(res))
       .catch((err)=>console.log("error"))
    }
 
   return (
     <>
+       
+        
         {
            <SingleProductPage {...data}  Post={Post}      />
         }
+
+        <Description />
+        <Footer />
+
+
     </>
   )
 }
@@ -27,7 +38,7 @@ export default Singleproduct
 
 
 export async function getStaticPaths(){
-  let res = await fetch(`https://naughty-frog-cummerbund.cyclic.app/arrival`)
+  let res = await fetch(`http://localhost:8080/arrival`)
   let data = await res.json()
 
   return{
@@ -43,7 +54,7 @@ export async function getStaticPaths(){
 
 export async function getStaticProps(context){
    let {params: {id}} = context
-  let res = await fetch(`https://naughty-frog-cummerbund.cyclic.app/arrival/${id}`)
+  let res = await fetch(`http://localhost:8080/arrival/${id}`)
   let data = await res.json()
 
   return{  props:{data} }
