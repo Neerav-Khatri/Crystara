@@ -80,7 +80,7 @@ export default function FooterPaymentMethod() {
         align={{ base: "center", md: "center" }}
       >
         {/* <Logo /> */}
-        <Flex fontSize={"2vw"} fontWeight="semibold">
+        <Flex fontSize={"1vw"} fontWeight="semibold">
           <Text>Contact Us: +91 9763827714 (Helpline) | </Text>
           <Divider orientation="vertical" />
           <Text>shaikhmustaq7714@.gmail.com</Text>

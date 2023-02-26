@@ -28,6 +28,10 @@ const Navbar = () => {
             <BreadcrumbItem isCurrentPage>
                 <Link href='/admin/user'>User</Link>
             </BreadcrumbItem>
+            
+            <BreadcrumbItem isCurrentPage>
+                <Link href='/'>Home</Link>
+            </BreadcrumbItem>
         </Breadcrumb>
     )
 }

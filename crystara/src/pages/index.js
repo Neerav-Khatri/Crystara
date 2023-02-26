@@ -1,7 +1,11 @@
-import RecentCarousel from "@/components/RecentViewCarousel"
-import Carousel from "@/components/TopCarousel"
-import TopCarousel from "@/components/TopCarousel"
+import Description from "@/components/description"
+import Footer from "@/components/Footer"
+import Navbar from "@/components/Navbar"
 import Head from "next/head"
+import Card from "./landingpage/Card"
+import Card_2 from "./landingpage/Card_2"
+import Carousel from "./landingpage/Carousel"
+import Middle from "./landingpage/Middle"
 
 export default function Home() {
   return (
@@ -12,8 +16,14 @@ export default function Home() {
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      <Carousel/>
-      
+
+      <Navbar />
+      <Carousel />
+      <Card />
+      <Middle />
+      <Card_2 />
+      <Description />
+      <Footer />
     </>
   )
 }

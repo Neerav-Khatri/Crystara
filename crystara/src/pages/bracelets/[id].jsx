@@ -3,6 +3,7 @@ import SingleProductPage from '@/components/singleproductAman'
 import axios from "axios"
 import Footer from '@/components/Footer'
 import Description from '@/components/description'
+import Navbar from '@/components/Navbar'
 
 
 const Singleproduct = ({data}) => {
@@ -16,6 +17,7 @@ const Singleproduct = ({data}) => {
 
   return (
     <>
+      <Navbar />
         {
            <SingleProductPage {...data}   Post={Post}     />
         }

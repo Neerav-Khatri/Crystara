@@ -39,6 +39,7 @@ import { IoIosHeart, IoIosPerson, IoIosPin } from "react-icons/io";
 import { useEffect, useState } from "react";
 import { BsBag, BsFillHandbagFill, BsHeart, BsHeartFill } from "react-icons/bs";
 import { useSelector } from "react-redux";
+import axios from "axios";
 
 export default function Navbar() {
   const { isOpen, onToggle } = useDisclosure();
@@ -47,7 +48,20 @@ export default function Navbar() {
 
   const [blockName, setBlockName] = useState("");
   const CartItems = useSelector((store) => store.cartReducer.Item);
-  const WishListItems = useSelector((store) => store.cartReducer.wishlistItem);
+  // const WishListItems = useSelector((store) => store.cartReducer.wishlistItem);
+  const {user, isAuth} = useSelector((store) => store.loginReducer);
+  const [wishLength, setWishLength] = useState(0)
+
+  console.log(user,isAuth);
+
+  useEffect(() => {
+    axios.get(`http://localhost:8080/wishlist`)
+    .then((res) => {
+      setWishLength(res.data.length);
+    }).catch((error) => {
+      console.log(error);
+    })
+  },[])
 
   const handleChange = (e) => {
     e.preventDefault();
@@ -171,7 +185,7 @@ export default function Navbar() {
                 <PopoverContent
                   border={0}
                   boxShadow={"xl"}
-                  bg={"blackAlpha.300"}
+                  bg={"white"}
                   p={4}
                   rounded={"xl"}
                   minW={"sm"}
@@ -225,7 +239,7 @@ export default function Navbar() {
                 <PopoverContent
                   border={0}
                   boxShadow={"xl"}
-                  bg={"blackAlpha.100"}
+                  bg={"white"}
                   p={4}
                   rounded={"xl"}
                   minW={"sm"}
@@ -242,7 +256,7 @@ export default function Navbar() {
                     </h1>
                     <Divider />
                     <Link href="/userLogin">
-                      <Text>User</Text>
+                      <Text>{isAuth ? user.first_name : "User"}</Text>
                     </Link>
                     <Divider />
                     <Link href="/adminLogin">
@@ -270,12 +284,12 @@ export default function Navbar() {
                 <Box
                   bgColor={"purple"}
                   borderRadius="full"
-                  width={"1rem"}
+                  width={"1vw"}
                   color={"white"}
                   marginLeft={"-0.7rem"}
                   marginTop={"0.8rem"}
                 >
-                  {WishListItems}
+                  {wishLength}
                 </Box>
               </Button>
             </Link>
@@ -295,7 +309,7 @@ export default function Navbar() {
                 <Box
                   bgColor={"purple"}
                   borderRadius="full"
-                  width={"1rem"}
+                  width={"1vw"}
                   color={"white"}
                   marginLeft={"-0.7rem"}
                   marginTop={"0.8rem"}

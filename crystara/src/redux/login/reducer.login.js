@@ -2,6 +2,7 @@ import * as types from "./actiontypes.login";
 
 const intialstate = {
     user: {},
+    isAuth: false,
     admin: {},
     isLoading: false,
     isError: false
@@ -20,7 +21,7 @@ switch(action.type){
         return {...state, isLoading: false}
     };
     case types.USER_LOGIN : {
-        return {...state, isLoading: false, user: action.payload[0]}
+        return {...state, isLoading: false, isAuth: true, user: action.payload[0]}
     };
     case types.ADMIN_LOGIN : {
         return {...state, isLoading: false, admin: action.payload[0]}

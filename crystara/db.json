@@ -204,9 +204,7 @@
       "currentPrice": 83098,
       "originalPrice": 84968,
       "name": "Carson Diamond Ring for Men",
-
       "material": "Diamond",
-
       "video": "https://cdn.caratlane.com/media/catalog/product/J/R/JR00872-WGP900_16_video.mp4",
       "src3": "https://cdn.caratlane.com/media/catalog/product/J/R/JR00872-WGP900_4_lar.jpg",
       "id": 1
@@ -218,9 +216,7 @@
       "currentPrice": 20280,
       "originalPrice": 20676,
       "name": "Intertwined Glim Diamond Ring",
-
       "material": "Diamond",
-
       "video": "https://cdn.caratlane.com/media/catalog/product/J/R/JR03769-YGP900_16_video.mp4",
       "src3": "https://cdn.caratlane.com/media/catalog/product/J/R/JR03769-YGP900_3_lar.jpg",
       "id": 2
@@ -553,7 +549,6 @@
       "currentPrice": 38087,
       "originalPrice": 42166,
       "name": "Amala Pearl Stud Earrings",
-
       "material": "Pearls",
       "video": "https://cdn.caratlane.com/media/catalog/product/J/E/JE06765-1RP9P0_16_video.mp4",
       "src3": "https://cdn.caratlane.com/media/catalog/product/J/E/JE06765-1RP9P0_3_lar.jpg",
@@ -790,11 +785,7 @@
       "tag": "TRENDING",
       "currentPrice": 13697,
       "name": "Aisha Cutout Charm Pearl Bracelet",
-
-
-
       "material": "Pearls",
-
       "video": "https://cdn.caratlane.com/media/catalog/product/U/T/UT00650-YG00P0_16_video.mp4",
       "src3": "https://cdn.caratlane.com/media/catalog/product/U/T/UT00650-YG00P0_3_lar.jpg",
       "id": 14
@@ -1676,10 +1667,21 @@
       "id": 72
     }
   ],
-
   "wishlist": [],
-
-  "cart": [],
+  "cart": [
+    {
+      "src1": "https://cdn.caratlane.com/media/catalog/product/J/R/JR03769-YGP900_5_lar.jpg",
+      "src2": "https://cdn.caratlane.com/media/catalog/product/J/R/JR03769-YGP900_4_lar.jpg",
+      "tag": "BESTSELLER",
+      "currentPrice": 20280,
+      "originalPrice": 20676,
+      "name": "Intertwined Glim Diamond Ring",
+      "material": "Diamond",
+      "video": "https://cdn.caratlane.com/media/catalog/product/J/R/JR03769-YGP900_16_video.mp4",
+      "src3": "https://cdn.caratlane.com/media/catalog/product/J/R/JR03769-YGP900_3_lar.jpg",
+      "id": 2
+    }
+  ],
   "user": [
     {
       "id": 1,
@@ -1689,12 +1691,21 @@
       "number": "9876543211",
       "email": "neerav@gmail.com",
       "password": "123456"
+    },
+    {
+      "first_name": "Rahul",
+      "last_name": "Kumar",
+      "number": "123456789",
+      "email": "rahul@gmail.com",
+      "password": "14753",
+      "gender": "male",
+      "id": 2
     }
   ],
   "admin": [
     {
       "id": 1,
-       "adminId":"454",
+      "adminId": "454",
       "name": "Kunal",
       "email": "kunal123@gmail.com",
       "password": "789456"
