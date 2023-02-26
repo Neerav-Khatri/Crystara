@@ -79,7 +79,7 @@ const Cart = ({data}) => {
      sum1+= maindata[i].currentPrice*ref.current[i].value
      sum3+= maindata[i].originalPrice*ref.current[i].value
     
-    if(maindata[i].data.originalPrice!=''){
+    if(maindata[i].originalPrice!=''){
       sum2+= (Number(maindata[i].originalPrice)-Number(maindata[i].currentPrice))*ref.current[i].value
    }
   }
