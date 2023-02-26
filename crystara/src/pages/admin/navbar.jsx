@@ -8,7 +8,7 @@ import {
 } from '@chakra-ui/react'
 const Navbar = () => {
     return (
-        <Breadcrumb fontWeight='medium' fontSize='xl'
+        <Breadcrumb fontWeight='medium' fontSize={{base:'sm', md:"xl"}}
         border="1px solid pink"
         p="5"
         bgColor='purple.100'

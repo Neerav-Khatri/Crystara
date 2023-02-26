@@ -31,15 +31,17 @@ const User = () => {
   }, []);
 
   const handleDelete = (id) => {
-    dispatch(deleteUser(id));
+    axios.delete(`http://localhost:8080/user/${id}`)
+    .then((res)=>{
+      dispatch(fetchUser())
+    })
     toast({
       title: "User Deleted ",
       position: positions,
       isClosable: true,
     });
-    console.log("hello!");
+    // console.log("hello!");
   };
-
   // console.log("hello", user);
   return (
     <>
@@ -47,12 +49,12 @@ const User = () => {
       <Heading textAlign={"center"} p={5} color=" #5d1059 ">
         List Of Users
       </Heading>
-      <TableContainer p={8}>
+      <TableContainer p={2} fontSize={{base:"12",md:"sm",xl:"md"}}>
         <Table variant="striped" colorScheme="purple">
           <TableCaption>LIST OF USERS</TableCaption>
-          <Thead>
-            <Tr>
-              <Th>NAME</Th>
+          <Thead >
+            <Tr fontSize={{base:"12",md:"sm",xl:"md"}}>
+              <Th >NAME</Th>
               <Th>EMAIL</Th>
               <Th>PASSWORD</Th>
               <Th>DELETE</Th>
@@ -67,7 +69,7 @@ const User = () => {
                   <Td>{item.password}</Td>
                   <Td>
                     {" "}
-                    <Button onClick={() => handleDelete(item.id)}>
+                    <Button fontSize={{base:'10' , md:'sm'}} onClick={() => handleDelete(item.id)}>
                       DELETE
                     </Button>{" "}
                   </Td>
