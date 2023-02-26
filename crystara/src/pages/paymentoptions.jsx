@@ -14,8 +14,10 @@ import React from "react";
 import { HiArrowLeft } from "react-icons/hi";
 import { IoIosArrowForward } from "react-icons/io";
 import { RiArrowDropRightLine } from "react-icons/ri";
+import { useSelector } from "react-redux";
 
 const PaymentOptions = () => {
+  const totalCartPrice=useSelector((store)=>store.cartReducer.Price)
   return (
     <Box bgColor={"gray.100"}>
       <Center
@@ -63,7 +65,7 @@ const PaymentOptions = () => {
                   fontWeight: "bold",
                 }}
               >
-                ₹12345
+                ₹{totalCartPrice}
               </p>
             </Flex>
             <br />

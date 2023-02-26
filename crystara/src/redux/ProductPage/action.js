@@ -5,9 +5,7 @@ import * as types from "./actionTypes";
 // Navbar functions
 
 export const getAllProductsNavbarAPI=async()=>{
-    let res = await axios.get(
-      `https://naughty-frog-cummerbund.cyclic.app/collection`
-    );
+    let res = await axios.get(`http://localhost:8080/collection`);
     return res.data
 }
 
