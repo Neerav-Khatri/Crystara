@@ -67,11 +67,12 @@ export default function FooterPaymentMethod() {
       className="footer-payment-method"
       bg={useColorModeValue("gray.50", "gray.900")}
       color={useColorModeValue("gray.700", "gray.200")}
-      
+      width={{ base: "100%", sm: "100%", lg: "100%" }}
     >
       <Container
         as={Flex}
-        maxW={"8xl"}
+        maxW={"100%"}
+        // width={{ base: "100%", sm: "100%", lg: "100%" }}
         py={4}
         // direction={{ base: "column", md: "row" }}
         spacing={4}
@@ -79,23 +80,23 @@ export default function FooterPaymentMethod() {
         align={{ base: "center", md: "center" }}
       >
         {/* <Logo /> */}
-        <Flex fontSize={"md"} fontWeight="semibold">
+        <Flex fontSize={"2vw"} fontWeight="semibold">
           <Text>Contact Us: +91 9763827714 (Helpline) | </Text>
           <Divider orientation="vertical" />
           <Text>shaikhmustaq7714@.gmail.com</Text>
         </Flex>
         <Stack direction={"row"} spacing={6}>
           <SocialButton label={"Twitter"} href={"#"}>
-            <SiVisa size={"50px"} />
+            <SiVisa size={"2vw"} />
           </SocialButton>
           <SocialButton label={"Twitter"} href={"#"}>
-            <SiMastercard size={"50px"} />
+            <SiMastercard size={"2vw"} />
           </SocialButton>
           <SocialButton label={"Twitter"} href={"#"}>
-            <FaCcPaypal size={"50px"} />
+            <FaCcPaypal size={"2vw"} />
           </SocialButton>
           <SocialButton label={"Twitter"} href={"#"}>
-            <SiAmericanexpress size={"25px"} />
+            <SiAmericanexpress size={"2vw"} />
           </SocialButton>
         </Stack>
       </Container>

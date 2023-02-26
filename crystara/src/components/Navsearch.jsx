@@ -57,7 +57,7 @@ const NavSearch = () => {
   };
 
   return (
-    <Box w="100%" position="relative">
+    <Box  w="100%" position="relative">
       <InputGroup>
         <Input
           border={"1px solid purple"}
@@ -66,6 +66,7 @@ const NavSearch = () => {
           onChange={(e) => setQuery(e.target.value)}
           type="text"
           placeholder="Search"
+          width={"100%"}
         />
         <InputRightElement
           color={"white"}
@@ -82,7 +83,7 @@ const NavSearch = () => {
               <Link href={`/${query}/${item.id}`}>
                 <Box className="dropdown-box-content">
                   <Text
-                    fontSize="xl"
+                    fontSize="md"
                     cursor="pointer"
                     onClick={clickToOffDropdown}
                   >

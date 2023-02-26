@@ -28,12 +28,15 @@ import {
   Checkbox,
   Radio,
   RadioGroup,
+  Collapse,
+  Grid,
 } from "@chakra-ui/react";
 import { HiArrowLeft } from "react-icons/hi";
 import Image from "next/image";
 import FooterPaymentMethod from "@/components/Footer-Payment-Method";
 import { BsCheckCircleFill } from "react-icons/bs";
 import { AiFillQuestionCircle, BiRupee } from "react-icons/ai";
+import { useSelector } from "react-redux";
 
 const NavLink = ({ children }) => (
   <Link
@@ -50,12 +53,19 @@ const NavLink = ({ children }) => (
   </Link>
 );
 
-export default function PaymentMethod() {
+export default function PaymentMethod({ data }) {
   const { colorMode, toggleColorMode } = useColorMode();
   const { isOpen, onOpen, onClose } = useDisclosure();
   const [isAuth] = useState(true);
-  const [value, setValue]=useState('1')
-
+  const [value, setValue] = useState("1");
+  const { Price, Saving, Item, cart } = useSelector((state) => {
+    return {
+      Price: state.cartReducer.Price,
+      Saving: state.cartReducer.Saving,
+      Item: state.cartReducer.Item,
+      cart: state.cartReducer.cart,
+    };
+  });
   return (
     <>
       <Box
@@ -64,6 +74,7 @@ export default function PaymentMethod() {
         px={4}
         minH={"5rem"}
         boxShadow={"box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px"}
+        width="100%"
       >
         <Flex alignItems={"center"} gap={10}>
           <Flex alignItems={"center"}>
@@ -83,10 +94,15 @@ export default function PaymentMethod() {
           </Flex>
         </Flex>
       </Box>
-      <Flex>
-        <Stack width={"120rem"}>
+      {/* <Flex justifyContent={"space-between"} width={"100%"} direction={{ sm: "column", lg: "row" }}> */}
+      <Flex
+        width={"100%"}
+        justifyContent={"space-between"}
+        direction={{ base: "column", sm: "column", lg: "row" }}
+      >
+        <Stack width={{ base: "100%", sm: "100%", lg: "50%" }}>
           <Accordion defaultIndex={[2]}>
-            <AccordionItem isFocusable>
+            <AccordionItem id="login-section" isFocusable>
               <h2>
                 <AccordionButton
                   _expanded={{ bg: "black", color: "white" }}
@@ -99,7 +115,10 @@ export default function PaymentMethod() {
                   {isAuth ? <BsCheckCircleFill /> : ""}
                 </AccordionButton>
               </h2>
-              <AccordionPanel paddingLeft={10} pb={4}>
+              <AccordionPanel
+                paddingLeft={{ base: "0", sm: "0", lg: "10" }}
+                pb={4}
+              >
                 <Stack bgColor={"rgba(249, 246, 246, 0.868)"}>
                   <Box textAlign={"left"} margin={"auto"}>
                     Logged in as {"shaikhmustaq7714gmai.com"}
@@ -115,6 +134,7 @@ export default function PaymentMethod() {
             <AccordionItem>
               <h2>
                 <AccordionButton
+                  id="shipping-section"
                   paddingLeft={10}
                   _expanded={{ bg: "black", color: "white" }}
                 >
@@ -126,7 +146,8 @@ export default function PaymentMethod() {
               </h2>
               <AccordionPanel paddingLeft={10} pb={4}>
                 <Stack
-                  paddingLeft={"3rem"}
+                  // paddingLeft={"3rem"}
+                  paddingLeft={{ base: "0", sm: "0", lg: "10" }}
                   bgColor={"rgba(249, 246, 246, 0.868)"}
                 >
                   <h1
@@ -168,7 +189,8 @@ export default function PaymentMethod() {
               </h2>
               <AccordionPanel paddingLeft={10} pb={4}>
                 <Box
-                  paddingLeft={"3rem"}
+                  // paddingLeft={"3rem"}
+                  paddingLeft={{ base: "0", sm: "0", lg: "10" }}
                   paddingTop={"1rem"}
                   bgColor={"rgba(249, 246, 246, 0.868)"}
                 >
@@ -202,7 +224,7 @@ export default function PaymentMethod() {
                     {paymentOptions.map((item) => {
                       return (
                         <Stack
-                        key={item.id}
+                          key={item.id}
                           width={"30rem"}
                           padding={2}
                           bg={"Background"}
@@ -217,14 +239,17 @@ export default function PaymentMethod() {
                     })}
                   </RadioGroup>
                   <br />
-                  <Button
-                    bgColor={"rgb(206,89,233)"}
-                    color="white"
-                    width={"20rem"}
-                    _hover={"none"}
-                  >
-                    Pay ₹Total Cost
-                  </Button>
+                  <Link textDecoration={"none"} href="/paymentoptions">
+                    <Button
+                      bgColor={"rgb(206,89,233)"}
+                      color="white"
+                      width={"20rem"}
+                      _hover={"none"}
+                      textDecoration="none"
+                    >
+                      Pay ₹{Price}
+                    </Button>
+                  </Link>
                   <Divider />
                   <h1>Shipping Adress</h1>
                   <br />
@@ -252,7 +277,7 @@ export default function PaymentMethod() {
           p={10}
           paddingLeft={5}
           paddingRight={5}
-          width={"80rem"}
+          width={{ sm: "100%", lg: "50%" }}
         >
           <Stack>
             <h1
@@ -262,47 +287,59 @@ export default function PaymentMethod() {
             >
               Order Summary
             </h1>
-            {sampleData.length > 0 &&
-              sampleData.map((item) => {
-                return (
-                  <>
-                    <Flex key={item.id} justifyContent={"space-between"}>
-                      <Flex align={"center"} gap={"2rem"}>
-                        <Box>
-                          <Image
-                            src={item.image}
-                            alt="prd"
-                            height={10}
-                            width={100}
-                          />
-                        </Box>
-                        <Box>
-                          <p>{item.title}</p>
-                          <p>{item.size}</p>
-                          <p>{item.date}</p>
-                        </Box>
-                      </Flex>
+            {data?.map((item) => {
+              return (
+                <>
+                  <Flex key={item.id} justifyContent={"space-between"}>
+                    <Flex align={"center"} gap={"2rem"}>
                       <Box>
+                        <Image
+                          src={item.src1}
+                          alt="prd"
+                          height={10}
+                          width={100}
+                        />
+                      </Box>
+                      <Box>
+                        {/* size: "34", date: "12/12/2055", */}
+                        <p>{item.name}</p>
                         <p
                           style={{
-                            fontWeight: "bold",
+                            fontSize: "12px",
                           }}
                         >
-                          ₹{item.offerPrice}
+                          {"34M"}
                         </p>
                         <p
                           style={{
-                            textDecorationLine: "line-through",
+                            fontSize: "12px",
                           }}
                         >
-                          ₹{item.price}
+                          {"27/02/2023"}
                         </p>
                       </Box>
                     </Flex>
-                    <Divider />
-                  </>
-                );
-              })}
+                    <Box>
+                      <p
+                        style={{
+                          fontWeight: "bold",
+                        }}
+                      >
+                        ₹{item.currentPrice}
+                      </p>
+                      <p
+                        style={{
+                          textDecorationLine: "line-through",
+                        }}
+                      >
+                        ₹{item.originalPrice}
+                      </p>
+                    </Box>
+                  </Flex>
+                  <Divider />
+                </>
+              );
+            })}
 
             <Box>
               <Flex justifyContent={"space-between"}>
@@ -312,7 +349,7 @@ export default function PaymentMethod() {
                     fontWeight: "bold",
                   }}
                 >
-                  ₹{1232 * 4}
+                  ₹{Price}
                 </p>
               </Flex>
             </Box>
@@ -324,7 +361,7 @@ export default function PaymentMethod() {
                     fontWeight: "bold",
                   }}
                 >
-                  -₹{432 * 4}
+                  -₹{Saving}
                 </p>
               </Flex>
             </Box>
@@ -349,55 +386,31 @@ export default function PaymentMethod() {
                     fontWeight: "bold",
                   }}
                 >
-                  ₹{800 * 4}
+                  ₹{Price - Saving}
                 </p>
               </Flex>
             </Box>
           </Stack>
         </Box>
       </Flex>
+      {/* </Flex> */}
       <FooterPaymentMethod />
     </>
   );
 }
 
-const paymentOptions=[
-  {name:"Credit Card",value:"1",id:1},
-  {name:"Debit Card",value:"2",id:2},
-  {name:"UPI",value:"3",id:3},
-  {name:"Netbanking",value:"4",id:4},
-  {name:"Cash on Delivery",value:"5",id:5},
-  {name:"Offline Payment",value:"6",id:6},
-]
-const sampleData = [
-  {
-    title: "Interwind Shimmer Diamond Ring",
-    size: "34",
-    date: "12/12/2055",
-    image:
-      "https://banner.caratlane.com/live-images/94329809fcdf408eb7487e69abd78d21.jpg",
-    price: 1232,
-    offerPrice: 800,
-    id:1
-  },
-  {
-    title: "product 1",
-    size: "34",
-    date: "12/12/2055",
-    image:
-      "https://banner.caratlane.com/live-images/94329809fcdf408eb7487e69abd78d21.jpg",
-    price: 1232,
-    offerPrice: 800,
-    id:2
-  },
-  {
-    title: "product 1",
-    size: "34",
-    date: "12/12/2055",
-    image:
-      "https://banner.caratlane.com/live-images/94329809fcdf408eb7487e69abd78d21.jpg",
-    price: 1232,
-    offerPrice: 800,
-    id:3
-  },
+const paymentOptions = [
+  { name: "Credit Card", value: "1", id: 1 },
+  { name: "Debit Card", value: "2", id: 2 },
+  { name: "UPI", value: "3", id: 3 },
+  { name: "Netbanking", value: "4", id: 4 },
+  { name: "Cash on Delivery", value: "5", id: 5 },
+  { name: "Offline Payment", value: "6", id: 6 },
 ];
+
+export async function getServerSideProps() {
+  let res = await fetch(`http://localhost:8080/cart`);
+  let data = await res.json();
+
+  return { props: { data } };
+}

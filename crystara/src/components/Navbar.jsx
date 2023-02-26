@@ -38,10 +38,7 @@ import { IoIosHeart, IoIosPerson, IoIosPin } from "react-icons/io";
 
 import { useEffect, useState } from "react";
 import { BsBag, BsFillHandbagFill, BsHeart, BsHeartFill } from "react-icons/bs";
-import { getCountryFlag } from "@/redux/ProductPage/action";
-// import styles from '@/styles/Home.module.css'
-// import "../styles/globals.css";
-// import styles from "../styles/Home.module.css"
+import { useSelector } from "react-redux";
 
 export default function Navbar() {
   const { isOpen, onToggle } = useDisclosure();
@@ -49,14 +46,9 @@ export default function Navbar() {
   const [enterPin, setEnterPin] = useState("");
 
   const [blockName, setBlockName] = useState("");
-  // const getlocation = () => {
-  //   fetch(`https://ipapi.co/json`)
-  //     .then((res) => res.json())
-  //     .then((r) => {
-  //       console.log(r);
-  //       setCurrLocation(r.city);
-  //     });
-  // };
+  const CartItems = useSelector((store) => store.cartReducer.Item);
+  const WishListItems = useSelector((store) => store.cartReducer.wishlistItem);
+
   const handleChange = (e) => {
     e.preventDefault();
     setEnterPin(e.target.value);
@@ -76,22 +68,23 @@ export default function Navbar() {
 
   // },[enterPin])
   return (
-    <Box className="sticky">
+    <Box width={"100%"} className="sticky">
       <Flex
         bg={useColorModeValue("#E9D5EF", "gray.100")}
         color={useColorModeValue("gray.600", "white")}
-        minH={"5rem"}
+        minH={"7rem"}
         py={{ base: 2 }}
         px={{ base: 4 }}
         borderBottom={1}
         borderStyle={"solid"}
         borderColor={useColorModeValue("gray.200", "gray.900")}
         align={"center"}
+        width={"100%"}
       >
         <Flex
           flex={{ base: 1, md: "auto" }}
           ml={{ base: -2 }}
-          display={{ base: "flex", md: "none" }}
+          display={{ base: "flex", md: "flex", xl:"none" }}
         >
           <IconButton
             onClick={onToggle}
@@ -107,36 +100,54 @@ export default function Navbar() {
           flex={{ base: 1 }}
           justify={{ base: "center", md: "start" }}
         >
-          <Text
-            // textAlign={useBreakpointValue({ base: "center", md: "left" })}
-            fontFamily={"heading"}
-            color={useColorModeValue("gray.800", "white")}
+          <Link href="/" >
+            <Text
+              // textAlign={useBreakpointValue({ base: "center", md: "left" })}
+              fontFamily={"heading"}
+              color={useColorModeValue("gray.800", "white")}
+              display={{md:"none",sm:"none",xl:"flex",base:"none"}}
+            >
+              <Image
+                src={"/same_color1.png"}
+                width={110}
+                height={70}
+                alt={"logo"}
+              />
+            </Text>
+          </Link>
+          <Flex
+            w={"70%"}
+            display={{ base: "none", md: "none", sm: "none", xl: "flex" }}
+            align="center"
+            ml={10}
           >
-            <Image
-              src={"/same_color1.png"}
-              width={110}
-              height={70}
-              alt={"logo"}
-            />
-          </Text>
-
-          <Flex display={{ base: "none", md: "flex" }} align="center" ml={10}>
             <DesktopNav />
           </Flex>
         </Flex>
-
-        <Stack
-          flex={{ base: 1, md: 0 }}
-          justify={"flex-end"}
+        <Flex
           direction={"row"}
           spacing={6}
           cursor={"pointer"}
+          width={{ md: "80%", xl: "50%" }}
+          justifyContent="flex-end"
+          alignItems="flex-end"
+          // width={"25%"}
         >
-          <Stack minW={"250px"}>
-            <NavSearch />
-          </Stack>
-          <Flex gap={"20px"} textAlign={"center"} justifyContent="center">
-            <Flex justifyContent={"center"} alignItems="center">
+          
+          <Flex
+            gap={"20px"}
+            textAlign={"center"}
+            justifyContent="space-between"
+            alignItems={"center"}
+          >
+            <Flex   >
+              
+              <NavSearch  />
+            </Flex>
+            <Flex
+              justifyContent={"center"}
+              alignItems="center"
+            >
               <Popover trigger={"hover"} placement={"bottom-start"}>
                 <PopoverTrigger>
                   <Link
@@ -152,7 +163,7 @@ export default function Navbar() {
                   >
                     <IoIosPin
                       size={"30px"}
-                      onClick={() => getlocation()}
+                      // onClick={() => getlocation()}
                     ></IoIosPin>
                   </Link>
                 </PopoverTrigger>
@@ -168,7 +179,13 @@ export default function Navbar() {
                   color="purple"
                 >
                   <Stack>
-                    <Heading>Pincode</Heading>
+                    <h1
+                      style={{
+                        fontSize: "1.5rem",
+                      }}
+                    >
+                      Pincode
+                    </h1>
                     <Input
                       placeholder="enter your pincode"
                       onChange={handleChange}
@@ -184,13 +201,16 @@ export default function Navbar() {
             <Box>
               <BasicUsage />
             </Box>
-            <Flex justifyContent={"center"} alignItems="center">
+            <Flex
+              justifyContent={"center"}
+              alignItems="center"
+            >
               <Popover trigger={"hover"} placement={"bottom-start"}>
                 <PopoverTrigger>
                   <Link
                     p={2}
                     href={"#"}
-                    fontSize={"lg"}
+                    // fontSize={"lg"}
                     fontWeight={500}
                     // color={"white"}
                     _hover={{
@@ -198,7 +218,7 @@ export default function Navbar() {
                       color: "green",
                     }}
                   >
-                    <IoIosPerson size={"30px"} />
+                    <IoIosPerson size={"2vw"} />
                   </Link>
                 </PopoverTrigger>
 
@@ -213,11 +233,21 @@ export default function Navbar() {
                   color="purple"
                 >
                   <Stack>
-                    <Heading>SignUP</Heading>
+                    <h1
+                      style={{
+                        fontSize: "1.5rem",
+                      }}
+                    >
+                      Signup
+                    </h1>
                     <Divider />
-                    <Text>User</Text>
+                    <Link href="/userLogin">
+                      <Text>User</Text>
+                    </Link>
                     <Divider />
-                    <Text>Admin</Text>
+                    <Link href="/adminLogin">
+                      <Text>Admin</Text>
+                    </Link>
                   </Stack>
                 </PopoverContent>
               </Popover>
@@ -228,53 +258,54 @@ export default function Navbar() {
               <IoBagSharp size={"30px"} />
               {"0"}
             </Box> */}
-
-            <Button
-              variant="outline"
-              // colorScheme="gray"
-              display="flex"
-              gap={0}
-              alignItems="center"
-              // borderWidth={2}
-              // borderColor="gray.800"
-              // borderRadius="full"
-            >
-              <BsHeartFill size={"1.5rem"} />
-              <Box
-                bgColor={"purple"}
-                borderRadius="full"
-                width={"1rem"}
-                color={"white"}
-                marginLeft={"-0.7rem"}
-                marginTop={"0.8rem"}
+            <Link href="/wishList">
+              <Button
+                display="flex"
+                gap={0}
+                alignItems="center"
+                bg={"transparent"}
+                _hover={"none"}
               >
-                {"3"}
-              </Box>
-            </Button>
-            <Button
-              variant="outline"
-              // colorScheme="gray"
-              display="flex"
-              gap={0}
-              alignItems="center"
-              // borderWidth={2}
-              // borderColor="gray.800"
-              // borderRadius="full"
-            >
-              <BsFillHandbagFill size={"1.5rem"} />
-              <Box
-                bgColor={"purple"}
-                borderRadius="full"
-                width={"1rem"}
-                color={"white"}
-                marginLeft={"-0.7rem"}
-                marginTop={"0.8rem"}
+                <BsHeartFill size={"1.5vw"} />
+                <Box
+                  bgColor={"purple"}
+                  borderRadius="full"
+                  width={"1rem"}
+                  color={"white"}
+                  marginLeft={"-0.7rem"}
+                  marginTop={"0.8rem"}
+                >
+                  {WishListItems}
+                </Box>
+              </Button>
+            </Link>
+            <Link href="/cart">
+              <Button
+                
+                display="flex"
+                gap={0}
+                alignItems="center"
+                bg={"transparent"}
+                _hover={"none"}
+                // borderWidth={2}
+                // borderColor="gray.800"
+                // borderRadius="full"
               >
-                {"3"}
-              </Box>
-            </Button>
+                <BsFillHandbagFill size={"1.5vw"} />
+                <Box
+                  bgColor={"purple"}
+                  borderRadius="full"
+                  width={"1rem"}
+                  color={"white"}
+                  marginLeft={"-0.7rem"}
+                  marginTop={"0.8rem"}
+                >
+                  {CartItems}
+                </Box>
+              </Button>
+            </Link>
           </Flex>
-        </Stack>
+        </Flex>
       </Flex>
 
       <Collapse in={isOpen} animateOpacity>
@@ -290,16 +321,33 @@ const DesktopNav = () => {
   const popoverContentBgColor = useColorModeValue("white", "gray.800");
 
   return (
-    <Flex gap={"100px"} justifyContent={"space-between"}>
-      <Stack direction={"row"} spacing={4}>
+    <Flex
+      // gap={"100px"}
+      justifyContent={"space-between"}
+      // width={{  lg: "100%" }}
+      width="100%"
+      
+    >
+      <Stack
+        direction={"row"}
+        spacing={4}
+        // width={{ md: "20%", lg: "100%" }}
+        width="100%"
+
+      >
         {NAV_ITEMS.map((navItem) => (
-          <Box key={navItem.label}>
+          <Box
+          width={"25%"}
+            key={navItem.label}
+            // border="1px solid black"
+          >
             <Popover trigger={"hover"} placement={"bottom-start"}>
               <PopoverTrigger>
                 <Link
                   p={2}
                   href={navItem.href ?? "#"}
-                  fontSize={"lg"}
+                  // fontSize={"0.8rem"}
+                  fontSize={{  md: "0.7rem", lg: "0.7rem",xl:"1.4rem"}}
                   fontWeight={500}
                   color={linkColor}
                   _hover={{
@@ -319,7 +367,7 @@ const DesktopNav = () => {
                   p={4}
                   rounded={"xl"}
                   marginTop="5px"
-                  minW={"8xl"}
+                  w={"auto"}
                 >
                   <Text fontWeight={"bold"}>{navItem.material}</Text>
                   <Flex align={"center"} justifyContent="space-evenly">
@@ -332,7 +380,8 @@ const DesktopNav = () => {
                       <Image
                         src={navItem.disImage}
                         alt="Display-image"
-                        width={500}
+                        width={100}
+                        // width={"auto"}
                         height={200}
                       />
                     </Stack>
@@ -349,11 +398,12 @@ const DesktopNav = () => {
 
 const NAV_ITEMS = [
   {
-    label: "New Arrivals",
-    href: "/newArrivals",
+    label: "Arrivals",
+    href: "/arrival",
   },
   {
     label: "Rings",
+    href: "/rings",
     material: "Shop by Metal",
     disImage:
       "https://banner.caratlane.com/live-images/ddb6596303814dd7a618df6c0ee4cd1c.jpg",
@@ -392,6 +442,7 @@ const NAV_ITEMS = [
   },
   {
     label: "Earrings",
+    href: "/earrings",
     material: "Shop by Metal",
     disImage:
       "https://banner.caratlane.com/live-images/88d76b4bce844970b3a522f9818bbf72.jpg",
@@ -429,7 +480,8 @@ const NAV_ITEMS = [
     ],
   },
   {
-    label: "Bracelets & Bangles",
+    label: "Bracelets",
+    href: "bracelets",
     material: "Shop by Metal",
     disImage:
       "https://banner.caratlane.com/live-images/35d5813bca7e4d65bd35aa032d180f9c.jpg",
@@ -466,36 +518,6 @@ const NAV_ITEMS = [
       },
     ],
   },
-  // {
-  //   label: "Earrings",
-  //   children: [
-  //     {
-  //       label: "Explore Design Work",
-  //       subLabel: "Trending Design to inspire you",
-  //       href: "#",
-  //     },
-  //     {
-  //       label: "New & Noteworthy",
-  //       subLabel: "Up-and-coming Designers",
-  //       href: "#",
-  //     },
-  //   ],
-  // },
-  // {
-  //   label: "Bracelets & Bangles",
-  //   children: [
-  //     {
-  //       label: "Explore Design Work",
-  //       subLabel: "Trending Design to inspire you",
-  //       href: "#",
-  //     },
-  //     {
-  //       label: "New & Noteworthy",
-  //       subLabel: "Up-and-coming Designers",
-  //       href: "#",
-  //     },
-  //   ],
-  // },
 ];
 
 const DesktopSubNav = ({ label, href, src }) => {

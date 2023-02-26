@@ -1671,9 +1671,7 @@
     "wishlist" : [
 
     ],
-    "cart" : [
-      
-    ],
+    "cart" : [],
     "user" : [
         {
             "id" : 1,
