@@ -16,6 +16,8 @@ import {
 } from "@chakra-ui/react";
 import { useDispatch, useSelector } from "react-redux";
 import { deleteProduct, fetchData} from "@/redux/admin/admin.action";
+import axios from "axios";
+import Mondal from "./Mondal";
 const ShowProduct = () => {
   const product = useSelector((store) => {
     return store.adminReducer.product
@@ -30,14 +32,18 @@ const ShowProduct = () => {
   }, []);
 
 
+
   const handleDelete = (id) => {
-    dispatch(deleteProduct(id));
+    axios.delete(`http://localhost:8080/rings/${id}`)
+    .then((res)=>{
+      dispatch(fetchData())
+    })
     toast({
       title: "Product Deleted ",
       position: positions,
       isClosable: true,
     });
-    console.log("hello!");
+    // console.log("hello!");
   };
 
   // console.log( "hello", product);
@@ -47,16 +53,16 @@ const ShowProduct = () => {
       <Heading textAlign={"center"} p={5} color="#5d1059">
         List Of Products
       </Heading>
-      <TableContainer p={8}>
+      <TableContainer p={2} fontSize={{base:"12",md:"sm",xl:"md"}} >
         <Table variant="striped" colorScheme="purple">
           <TableCaption>LIST OF PRODUCT</TableCaption>
           <Thead>
-            <Tr>
-              <Th>TITLE</Th>
-              <Th>MATERIAL</Th>
-              <Th>PRICE</Th>
-              <Th>EDIT</Th>
-              <Th>DELETE</Th>
+            <Tr >
+              <Th fontSize={{base:"12",xl:"md"}}>TITLE</Th>
+              <Th fontSize={{base:"12",xl:"md"}}>MATERIAL</Th>
+              <Th fontSize={{base:"12",xl:"md"}}>PRICE</Th>
+              <Th fontSize={{base:"12",xl:"md"}}>EDIT</Th>
+              <Th fontSize={{base:"12",xl:"md"}}>DELETE</Th>
             </Tr>
           </Thead>
           <Tbody>
@@ -68,11 +74,11 @@ const ShowProduct = () => {
                     <Td>{item.material}</Td>
                     <Td>{item.currentPrice}</Td>
                     <Td>
-                      <Button>EDIT</Button>{" "}
+                      <Mondal/>
                     </Td>
                     <Td>
                       {" "}
-                      <Button onClick={() => handleDelete(item.id)}>DELETE</Button>{" "}
+                      <Button fontSize={{base:'10' , md:'sm'}} onClick={() => handleDelete(item.id)}>DELETE</Button>{" "}
                     </Td>
                   </Tr>
                 );

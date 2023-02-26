@@ -14,7 +14,7 @@ const fetchDataSuccess = (data) => {
 export const fetchData = () => async (dispatch) => {
   try {
     const response = await axios.get(
-      "https://naughty-frog-cummerbund.cyclic.app/rings"
+      "http://localhost:8080/rings"
     );
     dispatch(fetchDataSuccess(response.data));
   } catch (error) {
@@ -37,7 +37,7 @@ const fetchUserSuccess = (data) => {
 export const fetchUser = () => async (dispatch) => {
   try {
     const response = await axios.get(
-      "https://naughty-frog-cummerbund.cyclic.app/user"
+      "http://localhost:8080/user"
     );
     dispatch(fetchUserSuccess(response.data));
   } catch (error) {
@@ -45,23 +45,3 @@ export const fetchUser = () => async (dispatch) => {
   }
 };
 
-
-// DELETE USER REQUEST 
-
-export const deleteUser = (id) => {
-  return (dispatch) => {
-    return axios.delete(`https://naughty-frog-cummerbund.cyclic.app/user/${id}`).then(() => {
-      dispatch({ type:types.DELETE_USER_SUCCESS, id });
-    });
-  };
-};
-
-// DELETE PRODUCT REQUEST 
-
-export const deleteProduct = (id) => {
-  return (dispatch) => {
-    return axios.delete(`https://naughty-frog-cummerbund.cyclic.app/rings/${id}`).then(() => {
-      dispatch({ type:types.DELETE_PRODUCT_SUCCESS, id });
-    });
-  };
-};

@@ -31,15 +31,15 @@ export const reducer = (state = initialState, action) => {
     case types.PRODUCT_ERROR:
       return { ...state, isError: true, isLoading: false };
 
-    // DELETE USER 
+    // // DELETE USER 
 
-    case types.DELETE_USER_SUCCESS:
-      return { ...state, user: state.user.filter((item) => item.id !== id) };
+    // case types.DELETE_USER_SUCCESS:
+    //   return { ...state, user: state.user.filter((item) => item.id !== id) };
 
       // DELETE PRODUCT 
 
-      case types.DELETE_PRODUCT_SUCCESS:
-      return { ...state, product: state.product.filter((item) => item.id !== payload) };
+    //   case types.DELETE_PRODUCT_SUCCESS:
+    //   return { ...state, product: state.product.filter((item) => item.id !== payload) };
     default:
       return state;
   }
