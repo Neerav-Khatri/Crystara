@@ -6,7 +6,8 @@
     "dev": "next dev",
     "build": "next build && next export",
     "start": "next start",
-    "lint": "next lint"
+    "lint": "next lint",
+    "server": "json-server --w db.json --p 8080"
   },
   "dependencies": {
     "@chakra-ui/icons": "^2.0.17",
