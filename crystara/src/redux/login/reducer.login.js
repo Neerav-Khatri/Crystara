@@ -1,15 +1,30 @@
-const intialstate = {
-    username:''
+import * as types from "./actiontypes.login";
 
+const intialstate = {
+    user: {},
+    admin: {},
+    isLoading: false,
+    isError: false
 }
 
 export const loginReducer=(state = intialstate ,action)=>{
 
 switch(action.type){
-
-
-
-
+    case types.isLOADING : {
+        return {...state, isLoading : true};
+    };
+    case types.isERROR : {
+        return {...state, isLoading: false, isError: true};
+    };
+    case types.REGISTER_USER : {
+        return {...state, isLoading: false}
+    };
+    case types.USER_LOGIN : {
+        return {...state, isLoading: false, user: action.payload[0]}
+    };
+    case types.ADMIN_LOGIN : {
+        return {...state, isLoading: false, admin: action.payload[0]}
+    };
     default: return state
 }
 
