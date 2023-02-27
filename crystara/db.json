@@ -1667,7 +1667,20 @@
       "id": 72
     }
   ],
-  "wishlist": [],
+  "wishlist": [
+    {
+      "src1": "https://cdn.caratlane.com/media/catalog/product/J/R/JR00872-WGP900_1_lar.jpg",
+      "src2": "https://cdn.caratlane.com/media/catalog/product/J/R/JR00872-WGP900_3_lar.jpg",
+      "tag": "BESTSELLER",
+      "currentPrice": 83098,
+      "originalPrice": 84968,
+      "name": "Carson Diamond Ring for Men",
+      "material": "Diamond",
+      "video": "https://cdn.caratlane.com/media/catalog/product/J/R/JR00872-WGP900_16_video.mp4",
+      "src3": "https://cdn.caratlane.com/media/catalog/product/J/R/JR00872-WGP900_4_lar.jpg",
+      "id": 1
+    }
+  ],
   "cart": [
     {
       "src1": "https://cdn.caratlane.com/media/catalog/product/J/R/JR03769-YGP900_5_lar.jpg",

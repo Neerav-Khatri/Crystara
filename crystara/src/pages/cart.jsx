@@ -68,7 +68,8 @@ const Cart = ({data}) => {
       dispatch(TotalsavingFound(sum2))
       dispatch(TotalItemFound(totalitem))
    }
-
+    localStorage.setItem("total", JSON.stringify(sum1))
+    localStorage.setItem("save", JSON.stringify(sum3))
    },[maindata.length])
 
    
