@@ -101,7 +101,7 @@ const Earrings = () => {
         <Box>
             <Flex direction="column">
                 <Box>
-                    <Image src="https://banner.caratlane.com/live-images/4320a30823014770b49d6c35ba3508c9.jpg" alt="Banner Image" width={1920} height={560} priority={true} />
+                    <Image src="https://banner.caratlane.com/live-images/4320a30823014770b49d6c35ba3508c9.jpg" alt="Banner Image" width={1920} height={560}  />
                 </Box>
                 <Flex bgColor="#f2d0f7" p="1rem" justifyContent="space-between">
                     <Box>

@@ -101,7 +101,7 @@ const Rings = () => {
         <Box>
             <Flex direction="column">
                 <Box>
-                    <Image src="https://banner.caratlane.com/live-images/10c2cf82f2ad425b960f2587933652a7.jpg" alt="Banner Image" width={1920} height={560} priority={true} />
+                    <Image src="https://banner.caratlane.com/live-images/10c2cf82f2ad425b960f2587933652a7.jpg" alt="Banner Image" width={1920} height={560}  />
                 </Box>
                 <Flex bgColor="#f2d0f7" p="1rem" justifyContent="space-between">
                     <Box>

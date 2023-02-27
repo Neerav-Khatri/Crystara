@@ -1667,6 +1667,7 @@
       "id": 72
     }
   ],
+
   "wishlist": [
     {
       "src1": "https://cdn.caratlane.com/media/catalog/product/J/R/JR00872-WGP900_1_lar.jpg",
@@ -1681,7 +1682,7 @@
       "id": 1
     }
   ],
-  "cart": [
+"cart": [
     {
       "src1": "https://cdn.caratlane.com/media/catalog/product/J/R/JR03769-YGP900_5_lar.jpg",
       "src2": "https://cdn.caratlane.com/media/catalog/product/J/R/JR03769-YGP900_4_lar.jpg",
@@ -1695,6 +1696,7 @@
       "id": 2
     }
   ],
+
   "user": [
     {
       "id": 1,
