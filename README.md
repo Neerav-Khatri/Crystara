@@ -4,6 +4,7 @@ We have clone the website "caratlane.com". CaratLane is an Indian physical and o
 
 <h1>Steps to start</h1>
 - Clone the repository<br/>
+- Direct to folder (cd crystara)<br/>
 - npm install<br/>
 - Start Server (npm run server)<br/>
 - Start Dev mode (npm run dev)<br/>
