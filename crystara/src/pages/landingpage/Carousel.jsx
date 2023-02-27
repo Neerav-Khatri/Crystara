@@ -52,7 +52,7 @@ export default function Carousel() {
     {
       
       image:
-        'https://banner.caratlane.com/live-images/dab8c9bccb50479fbad968e7ea6ea450.webp',
+      'https://cdn.caratlane.com/media/static/images/V4/2023/CL/02-FEB/AppBanner/Offer/02/Desktop_1920x560_toplisting.jpg',
     },
     {
       
