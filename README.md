@@ -2,6 +2,12 @@
 <h1>About</h1>
 We have clone the website "caratlane.com". CaratLane is an Indian physical and online jewelry retailer. We have given a unique name called "Crystara" and logo our website. It is a collabrative project with a team of 5 members build in a span of 5 days. 
 
+<h1>Steps to start</h1>
+- Clone the repository<br/>
+- npm install<br/>
+- Start Server (npm run server)<br/>
+- Start Dev mode (npm run dev)<br/>
+
 
 <h1>Tech Stack</h1>
 CSS  |  NextJs  |  Chakra-Ui  |  JSON Server  |  React  |  Redux  |  Redux-Thunk 
