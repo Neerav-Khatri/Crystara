@@ -100,7 +100,7 @@ const Arrival = () => {
         <Box>
             <Flex direction="column">
                 <Box>
-                    <Image src="https://cdn.caratlane.com/media/static/images/V4/2023/CL/02-FEB/AppBanner/Newin/01/Desktop_1920-x560_toplisting.jpg" alt="Banner Image" width={1920} height={560} priority={true} />
+                    <Image src="https://cdn.caratlane.com/media/static/images/V4/2023/CL/02-FEB/AppBanner/Newin/01/Desktop_1920-x560_toplisting.jpg" alt="Banner Image" width={1920} height={560}  />
                 </Box>
                 <Flex bgColor="#f2d0f7" p="1rem" justifyContent="space-between">
                     <Box>

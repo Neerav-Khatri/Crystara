@@ -68,7 +68,8 @@ const Cart = ({data}) => {
       dispatch(TotalsavingFound(sum2))
       dispatch(TotalItemFound(totalitem))
    }
-
+    localStorage.setItem("total", JSON.stringify(sum1))
+    localStorage.setItem("save", JSON.stringify(sum3))
    },[maindata.length])
 
    
@@ -157,7 +158,7 @@ const Cart = ({data}) => {
 
                 return <div className={styles.singleCart} key={el.id} >
                         <div className={styles.singleCart1} >
-                           <Image src={el.src1} width={250} height={550} alt="pic" priority={true}  />
+                           <Image src={el.src1} width={250} height={550} alt="pic"   />
                         </div>
                        <div className={styles.singleCart2} >
                         <p className={styles.P14} > {el.name}</p>

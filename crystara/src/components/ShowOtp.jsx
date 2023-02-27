@@ -123,7 +123,7 @@ export default function ShowOtp() {
                   Close
                 </Button>
                 </Link> */}
-                  <Link href={"/newArrivals"}>
+                  <Link href={"/arrival"}>
                     <Button colorScheme={"purple"}>Continue for More...</Button>
                   </Link>
                 </ModalFooter>
