@@ -22,7 +22,7 @@ const AddProduct = () => {
 
   const handleRings = (e) => {
     e.preventDefault()
-    fetch(`https://charming-bee-pea-coat.cyclic.app/rings`, {
+    fetch(`/rings`, {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(formData),
@@ -46,7 +46,7 @@ const AddProduct = () => {
 
   const handleEarrings = (e) => {
     e.preventDefault()
-    fetch(`https://charming-bee-pea-coat.cyclic.app/earrings`, {
+    fetch(`http://localhost:8080/earrings`, {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(formData),
@@ -71,7 +71,7 @@ const AddProduct = () => {
 
   const handleBracelet = (e) => {
     e.preventDefault()
-    fetch(`https://charming-bee-pea-coat.cyclic.app/bracelets`, {
+    fetch(`http://localhost:8080/bracelets`, {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(formData),
@@ -94,7 +94,7 @@ const AddProduct = () => {
 
   const handleArrivel = (e) => {
     e.preventDefault()
-    fetch(`https://charming-bee-pea-coat.cyclic.app/arrival`, {
+    fetch(`http://localhost:8080/arrival`, {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(formData),

@@ -35,7 +35,7 @@ const ShowProduct = () => {
 
   const handleDelete = (id) => {
     axios
-      .delete(`https://charming-bee-pea-coat.cyclic.app/rings/${id}`)
+      .delete(`http://localhost:8080/rings/${id}`)
       .then((res) => {
         dispatch(fetchData());
       });

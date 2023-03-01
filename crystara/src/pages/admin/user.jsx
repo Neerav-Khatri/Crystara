@@ -32,7 +32,7 @@ const User = () => {
 
   const handleDelete = (id) => {
     axios
-      .delete(`https://charming-bee-pea-coat.cyclic.app/user/${id}`)
+      .delete(`http://localhost:8080/user/${id}`)
       .then((res) => {
         dispatch(fetchUser());
       });

@@ -97,14 +97,14 @@ const Cart = ({data}) => {
 
       const Renderdata=()=>{
         axios
-          .get(`https://charming-bee-pea-coat.cyclic.app/cart`)
+          .get(`http://localhost:8080/cart`)
           .then((res) => setmaindata(res.data))
           .catch((err) => console.log("error"));
       }
   
       const del=(id)=>{
        axios
-         .delete(`https://charming-bee-pea-coat.cyclic.app/cart/${id}`)
+         .delete(`http://localhost:8080/cart/${id}`)
          .then((res) => Renderdata())
          .catch((err) => console.log("error"));
     }
@@ -124,7 +124,7 @@ const Cart = ({data}) => {
          
 
         axios
-          .post(`https://charming-bee-pea-coat.cyclic.app/wishlist`, data)
+          .post(`http://localhost:8080/wishlist`, data)
           .then((res) => console.log(res))
           .catch((err) => console.log("error"));
         delfun(id)
@@ -247,7 +247,7 @@ const Cart = ({data}) => {
 
 export async function getServerSideProps(){
   
-  let res = await fetch(`https://charming-bee-pea-coat.cyclic.app/cart`);
+  let res = await fetch(`http://localhost:8080/cart`);
   let data = await res.json()
 
   return {  props: {data} }

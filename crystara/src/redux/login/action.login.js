@@ -16,7 +16,7 @@ export const registered = () => {
 export const registerUser = (data) => (dispatch) => {
     dispatch(handleLoading);
     axios
-      .post(`https://charming-bee-pea-coat.cyclic.app/user`, data)
+      .post(`http://localhost:8080/user`, data)
       .then((res) => {
         dispatch(registered);
       })
@@ -30,7 +30,7 @@ export const loginUser = (data) => (dispatch) => {
     dispatch(handleLoading);
     axios
       .get(
-        `https://charming-bee-pea-coat.cyclic.app/user?q=${data.email}&${data.password}`
+        `http://localhost:8080/user?q=${data.email}&${data.password}`
       )
       .then((res) => {
         dispatch({ type: types.USER_LOGIN, payload: res.data });
@@ -45,7 +45,7 @@ export const adminLogin = (data) => (dispatch) => {
     dispatch(handleLoading);
     axios
       .get(
-        `https://charming-bee-pea-coat.cyclic.app/admin?q=${data.email}&${data.password}`
+        `http://localhost:8080/admin?q=${data.email}&${data.password}`
       )
       .then((res) => {
         dispatch({ type: types.ADMIN_LOGIN, payload: res.data });

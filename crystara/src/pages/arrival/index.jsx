@@ -31,13 +31,13 @@ const Arrival = () => {
 
     const handleWishAdd = (data) => {
         axios
-          .post(`https://charming-bee-pea-coat.cyclic.app/wishlist`, data)
+          .post(`http://localhost:8080/wishlist`, data)
           .then((res) => console.log(res))
           .catch((error) => console.log(error));
     }
 
     const handleWishDelete = (id) => {
-        axios.delete(`https://charming-bee-pea-coat.cyclic.app/wishlist/${id}`)
+        axios.delete(`http://localhost:8080/wishlist/${id}`)
         .then((res) => console.log(res))
         .catch((error) => console.log(error))
     }
