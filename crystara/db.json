@@ -1717,13 +1717,13 @@
       "password": "123456"
     },
     {
-      "first_name": "Rahul",
-      "last_name": "Kumar",
-      "number": "123456789",
-      "email": "rahul@gmail.com",
-      "password": "14753",
+      "id": 2,
+      "first_name": "aman",
+      "last_name": "maurya",
       "gender": "male",
-      "id": 2
+      "number": "9876543211",
+      "email": "neerav@gmail.com",
+      "password": "123456"
     },
     {
       "first_name": "DURGA",
