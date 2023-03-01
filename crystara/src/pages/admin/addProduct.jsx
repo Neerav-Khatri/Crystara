@@ -22,7 +22,7 @@ const AddProduct = () => {
 
   const handleRings = (e) => {
     e.preventDefault()
-    fetch(`http://localhost:8080/rings`, {
+    fetch(`https://charming-bee-pea-coat.cyclic.app/rings`, {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(formData),
@@ -34,8 +34,7 @@ const AddProduct = () => {
           title: `Product Added Successfully`,
           position: positions,
           isClosable: true,
-        })
-
+        });
       })
       .catch((e) => {
         console.log(e);
@@ -47,7 +46,7 @@ const AddProduct = () => {
 
   const handleEarrings = (e) => {
     e.preventDefault()
-    fetch(`http://localhost:8080/earrings`, {
+    fetch(`https://charming-bee-pea-coat.cyclic.app/earrings`, {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(formData),
@@ -72,7 +71,7 @@ const AddProduct = () => {
 
   const handleBracelet = (e) => {
     e.preventDefault()
-    fetch(`http://localhost:8080/bracelets`, {
+    fetch(`https://charming-bee-pea-coat.cyclic.app/bracelets`, {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(formData),
@@ -84,8 +83,7 @@ const AddProduct = () => {
           title: `Product Added Successfully`,
           position: positions,
           isClosable: true,
-        })
-
+        });
       })
       .catch((e) => {
         console.log(e);
@@ -96,7 +94,7 @@ const AddProduct = () => {
 
   const handleArrivel = (e) => {
     e.preventDefault()
-    fetch(`http://localhost:8080/arrival`, {
+    fetch(`https://charming-bee-pea-coat.cyclic.app/arrival`, {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(formData),
@@ -108,8 +106,7 @@ const AddProduct = () => {
           title: `Product Added Successfully`,
           position: positions,
           isClosable: true,
-        })
-
+        });
       })
       .catch((e) => {
         console.log(e);
