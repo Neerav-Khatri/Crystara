@@ -34,10 +34,11 @@ const ShowProduct = () => {
 
 
   const handleDelete = (id) => {
-    axios.delete(`http://localhost:8080/rings/${id}`)
-    .then((res)=>{
-      dispatch(fetchData())
-    })
+    axios
+      .delete(`https://charming-bee-pea-coat.cyclic.app/rings/${id}`)
+      .then((res) => {
+        dispatch(fetchData());
+      });
     toast({
       title: "Product Deleted ",
       position: positions,

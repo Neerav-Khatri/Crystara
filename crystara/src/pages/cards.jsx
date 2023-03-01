@@ -153,7 +153,7 @@ const CardsForPay = () => {
                     fontWeight: "bold",
                   }}
                 >
-                  ₹12345
+                  ₹19884
                 </p>
               </Flex>
               <br />

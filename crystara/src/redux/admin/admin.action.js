@@ -14,7 +14,7 @@ const fetchDataSuccess = (data) => {
 export const fetchData = () => async (dispatch) => {
   try {
     const response = await axios.get(
-      "http://localhost:8080/rings"
+      "https://charming-bee-pea-coat.cyclic.app/rings"
     );
     dispatch(fetchDataSuccess(response.data));
   } catch (error) {
@@ -37,7 +37,7 @@ const fetchUserSuccess = (data) => {
 export const fetchUser = () => async (dispatch) => {
   try {
     const response = await axios.get(
-      "http://localhost:8080/user"
+      "https://charming-bee-pea-coat.cyclic.app/user"
     );
     dispatch(fetchUserSuccess(response.data));
   } catch (error) {

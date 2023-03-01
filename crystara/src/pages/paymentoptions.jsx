@@ -8,15 +8,22 @@ import {
   Stack,
   Text,
 } from "@chakra-ui/react";
+import axios from "axios";
 import Image from "next/image";
 import Link from "next/link";
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { HiArrowLeft } from "react-icons/hi";
 import { IoIosArrowForward } from "react-icons/io";
 import { RiArrowDropRightLine } from "react-icons/ri";
 import { useSelector } from "react-redux";
 
 const PaymentOptions = () => {
+
+
+
+  // let totalPrice=JSON.parse(localStorage.getItem("total"))
+  // let totalSave=JSON.parse(localStorage.getItem("save"))
+  
   // const { Price, Saving, Item, cart } = useSelector((state) => {
   //   return {
   //     Price: state.cartReducer.Price,
@@ -25,8 +32,7 @@ const PaymentOptions = () => {
   //     cart: state.cartReducer.cart,
   //   };
   // })
-  const {Price, Saving} = useSelector((store) => store.cartReducer);
-  console.log(Price, Saving);
+ 
   return (
     <Box bgColor={"gray.100"}>
       <Center
@@ -74,7 +80,7 @@ const PaymentOptions = () => {
                   fontWeight: "bold",
                 }}
               >
-                ₹{Price-Saving}
+                ₹{"19884"}
               </p>
             </Flex>
             <br />

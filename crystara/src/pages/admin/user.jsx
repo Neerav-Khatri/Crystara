@@ -31,10 +31,11 @@ const User = () => {
   }, []);
 
   const handleDelete = (id) => {
-    axios.delete(`http://localhost:8080/user/${id}`)
-    .then((res)=>{
-      dispatch(fetchUser())
-    })
+    axios
+      .delete(`https://charming-bee-pea-coat.cyclic.app/user/${id}`)
+      .then((res) => {
+        dispatch(fetchUser());
+      });
     toast({
       title: "User Deleted ",
       position: positions,

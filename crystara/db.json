@@ -1667,9 +1667,30 @@
       "id": 72
     }
   ],
-  "wishlist": [],
-
- 
+  "wishlist": [
+    {
+      "src1": "https://cdn.caratlane.com/media/catalog/product/J/E/JE07657-1RP600_4_lar.jpg",
+      "src2": "https://cdn.caratlane.com/media/catalog/product/J/E/JE07657-1RP600_7_lar.jpg",
+      "currentPrice": 76269,
+      "originalPrice": 90926,
+      "name": "Bibaa Diamond Stud Earrings",
+      "material": "Diamond",
+      "video": "https://cdn.caratlane.com/media/catalog/product/J/E/JE07657-1RP600_16_video.mp4",
+      "src3": "https://cdn.caratlane.com/media/catalog/product/J/E/JE07657-1RP600_3_lar.jpg",
+      "id": 12
+    },
+    {
+      "src1": "https://cdn.caratlane.com/media/catalog/product/J/E/JE07706-1RP600_4_lar.jpg",
+      "src2": "https://cdn.caratlane.com/media/catalog/product/J/E/JE07706-1RP600_7_lar.jpg",
+      "currentPrice": 73016,
+      "originalPrice": 85493,
+      "name": "Pia Diamond Stud Earrings",
+      "material": "Diamond",
+      "video": "https://cdn.caratlane.com/media/catalog/product/J/E/JE07706-1RP600_16_video.mp4",
+      "src3": "https://cdn.caratlane.com/media/catalog/product/J/E/JE07706-1RP600_3_lar.jpg",
+      "id": 10
+    }
+  ],
 
   "cart": [
     {
@@ -1685,7 +1706,6 @@
       "id": 2
     }
   ],
-
   "user": [
     {
       "id": 1,
@@ -1704,6 +1724,15 @@
       "number": "9876543211",
       "email": "neerav@gmail.com",
       "password": "123456"
+    },
+    {
+      "first_name": "DURGA",
+      "last_name": "DEOTALE",
+      "number": "07719093677",
+      "email": "eve.holt@reqres.in",
+      "password": "cityslicka",
+      "gender": "female",
+      "id": 3
     }
   ],
   "admin": [

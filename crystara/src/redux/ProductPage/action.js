@@ -5,7 +5,9 @@ import * as types from "./actionTypes";
 // Navbar functions
 
 export const getAllProductsNavbarAPI=async()=>{
-    let res = await axios.get(`http://localhost:8080/collection`);
+    let res = await axios.get(
+      `https://charming-bee-pea-coat.cyclic.app/collection`
+    );
     return res.data
 }
 
@@ -28,10 +30,12 @@ export const handleError = () => {
 
 export const getProducts = (type) => async(dispatch) => {
   dispatch(handleLoading);
-  await axios.get(`http://localhost:8080/${type}`)
-  .then((res) => {
-    dispatch({type: types.GET_PRODUCT, payload: res.data})
-  }).catch((error) => {
-    dispatch(handleError);
-  })
+  await axios
+    .get(`https://charming-bee-pea-coat.cyclic.app/${type}`)
+    .then((res) => {
+      dispatch({ type: types.GET_PRODUCT, payload: res.data });
+    })
+    .catch((error) => {
+      dispatch(handleError);
+    });
 }
