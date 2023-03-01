@@ -1695,6 +1695,15 @@
       "number": "9876543211",
       "email": "neerav@gmail.com",
       "password": "123456"
+    },
+    {
+      "id": 2,
+      "first_name": "aman",
+      "last_name": "maurya",
+      "gender": "male",
+      "number": "9876543211",
+      "email": "neerav@gmail.com",
+      "password": "123456"
     }
   ],
   "admin": [
