@@ -10,7 +10,7 @@ const Singleproduct = ({data}) => {
   console.log(data)
   const Post =()=>{
     axios
-      .post(`https://charming-bee-pea-coat.cyclic.app/cart`, data)
+      .post(`http://localhost:8080/cart`, data)
       .then((res) => console.log(res))
       .catch((err) => console.log("error"));
  }
@@ -37,7 +37,7 @@ export default Singleproduct
 
 
 export async function getStaticPaths(){
-  let res = await fetch(`https://charming-bee-pea-coat.cyclic.app/earrings`);
+  let res = await fetch(`http://localhost:8080/earrings`);
   let data = await res.json()
 
   return{
@@ -54,7 +54,7 @@ export async function getStaticPaths(){
 export async function getStaticProps(context){
    let {params: {id}} = context
   let res = await fetch(
-    `https://charming-bee-pea-coat.cyclic.app/earrings/${id}`
+    `http://localhost:8080/earrings/${id}`
   );
   let data = await res.json()
 

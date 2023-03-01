@@ -6,7 +6,7 @@ import * as types from "./actionTypes";
 
 export const getAllProductsNavbarAPI=async()=>{
     let res = await axios.get(
-      `https://charming-bee-pea-coat.cyclic.app/collection`
+      `http://localhost:8080/collection`
     );
     return res.data
 }
@@ -31,7 +31,7 @@ export const handleError = () => {
 export const getProducts = (type) => async(dispatch) => {
   dispatch(handleLoading);
   await axios
-    .get(`https://charming-bee-pea-coat.cyclic.app/${type}`)
+    .get(`http://localhost:8080/${type}`)
     .then((res) => {
       dispatch({ type: types.GET_PRODUCT, payload: res.data });
     })
