@@ -22,7 +22,7 @@ const AddProduct = () => {
 
   const handleRings = (e) => {
     e.preventDefault()
-    fetch(`/rings`, {
+    fetch(`https://mock-server-crystara.onrender.com/rings`, {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(formData),
@@ -46,7 +46,7 @@ const AddProduct = () => {
 
   const handleEarrings = (e) => {
     e.preventDefault()
-    fetch(`http://localhost:8080/earrings`, {
+    fetch(`https://mock-server-crystara.onrender.com/earrings`, {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(formData),
@@ -71,7 +71,7 @@ const AddProduct = () => {
 
   const handleBracelet = (e) => {
     e.preventDefault()
-    fetch(`http://localhost:8080/bracelets`, {
+    fetch(`https://mock-server-crystara.onrender.com/bracelets`, {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(formData),
@@ -94,7 +94,7 @@ const AddProduct = () => {
 
   const handleArrivel = (e) => {
     e.preventDefault()
-    fetch(`http://localhost:8080/arrival`, {
+    fetch(`https://mock-server-crystara.onrender.com/arrival`, {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(formData),

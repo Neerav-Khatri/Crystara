@@ -35,7 +35,7 @@ const ShowProduct = () => {
 
   const handleDelete = (id) => {
     axios
-      .delete(`http://localhost:8080/rings/${id}`)
+      .delete(`https://mock-server-crystara.onrender.com/rings/${id}`)
       .then((res) => {
         dispatch(fetchData());
       });

@@ -410,7 +410,7 @@ const paymentOptions = [
 ];
 
 export async function getServerSideProps() {
-  let res = await fetch(`http://localhost:8080/cart`);
+  let res = await fetch(`https://mock-server-crystara.onrender.com/cart`);
   let data = await res.json();
 
   return { props: { data } };

@@ -32,7 +32,7 @@ const User = () => {
 
   const handleDelete = (id) => {
     axios
-      .delete(`http://localhost:8080/user/${id}`)
+      .delete(`https://mock-server-crystara.onrender.com/user/${id}`)
       .then((res) => {
         dispatch(fetchUser());
       });

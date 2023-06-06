@@ -65,22 +65,22 @@ const CardsForPay = () => {
 
   const enteringNumber = (e) => {
     console.log(e.target.value);
-    if (e.target.value == "123123") {
+    if (e.target.value == "124512451245") {
       setNumber(!number);
     }
   };
   const enteringDate = (e) => {
-    if (e.target.value == "12/22") {
+    if (e.target.value == "12/23") {
       setDate(!date);
     }
   };
   const enteringCVV = (e) => {
-    if (e.target.value == "123") {
+    if (e.target.value == "321") {
       setCvv(!cvv);
     }
   };
   const enteringName = (e) => {
-    if (e.target.value == "mustaq shaikh") {
+    if (e.target.value == "Mustaq") {
       setName(!name);
     }
   };

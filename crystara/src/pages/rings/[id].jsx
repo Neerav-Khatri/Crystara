@@ -17,7 +17,7 @@ const Singleproduct = ({data}) => {
 
   const Post =()=>{
     axios
-      .post(`http://localhost:8080/cart`, data)
+      .post(`https://mock-server-crystara.onrender.com/cart`, data)
       .then((res) => console.log(res))
       .catch((err) => console.log("error"));
  }
@@ -44,7 +44,7 @@ export default Singleproduct
 
 
 export async function getStaticPaths(){
-  let res = await fetch(`http://localhost:8080/rings`);
+  let res = await fetch(`https://mock-server-crystara.onrender.com/rings`);
   let data = await res.json()
 
   return{
@@ -60,7 +60,7 @@ export async function getStaticPaths(){
 
 export async function getStaticProps(context){
    let {params: {id}} = context
-  let res = await fetch(`http://localhost:8080/rings/${id}`);
+  let res = await fetch(`https://mock-server-crystara.onrender.com/rings/${id}`);
   let data = await res.json()
 
   return{  props:{data} }

@@ -31,14 +31,14 @@ const Bracelets = () => {
 
     const handleWishAdd = (data) => {
         axios
-          .post(`http://localhost:8080/wishlist`, data)
+          .post(`https://mock-server-crystara.onrender.com/wishlist`, data)
           .then((res) => console.log(res))
           .catch((error) => console.log(error));
     }
 
     const handleWishDelete = (id) => {
         axios
-          .delete(`http://localhost:8080/wishlist/${id}`)
+          .delete(`https://mock-server-crystara.onrender.com/wishlist/${id}`)
           .then((res) => console.log(res))
           .catch((error) => console.log(error));
     }
@@ -85,7 +85,7 @@ const Bracelets = () => {
     }
 
       const handleDetailPage = (id) => {
-        router.push(`/rings/${id}`);
+        router.push(`/bracelets/${id}`);
       }
 
   return (

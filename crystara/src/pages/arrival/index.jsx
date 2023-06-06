@@ -31,13 +31,13 @@ const Arrival = () => {
 
     const handleWishAdd = (data) => {
         axios
-          .post(`http://localhost:8080/wishlist`, data)
+          .post(`https://mock-server-crystara.onrender.com/wishlist`, data)
           .then((res) => console.log(res))
           .catch((error) => console.log(error));
     }
 
     const handleWishDelete = (id) => {
-        axios.delete(`http://localhost:8080/wishlist/${id}`)
+        axios.delete(`https://mock-server-crystara.onrender.com/wishlist/${id}`)
         .then((res) => console.log(res))
         .catch((error) => console.log(error))
     }
@@ -84,7 +84,7 @@ const Arrival = () => {
     }
 
     const handleDetailPage = (id) => {
-        router.push(`/rings/${id}`);
+        router.push(`/arrival/${id}`);
     }
 
   return (

@@ -8,6 +8,7 @@ import { useRouter } from 'next/router'
 import Footer from '@/components/Footer'
 import { useDispatch } from 'react-redux'
 import { Getwish } from '@/redux/Cart/action'
+import Navbar from '@/components/Navbar'
 
 const WishList = () => {
 
@@ -23,7 +24,7 @@ const WishList = () => {
     },[])
 
     const getwishlist=()=>{
-        axios.get(`http://localhost:8080/wishlist`)
+        axios.get(`https://mock-server-crystara.onrender.com/wishlist`)
        .then((res)=>{setwishlistdata(res.data)
               })
        .catch((err)=>console.log("error"))
@@ -31,7 +32,7 @@ const WishList = () => {
 
  // console.log(wishlistdata)
   const del=(id)=>{
-    axios.delete(`http://localhost:8080/wishlist/${id}`)
+    axios.delete(`https://mock-server-crystara.onrender.com/wishlist/${id}`)
    .then((res)=>  getwishlist() )
    .catch((err)=>console.log("error"))
  }
@@ -47,7 +48,7 @@ const WishList = () => {
     console.log(dummy[0])
     let data = dummy[0]
 
-  axios.post(`http://localhost:8080/cart`,data)
+  axios.post(`https://mock-server-crystara.onrender.com/cart`,data)
   .then((res)=>console.log(res))
   .catch((err)=>console.log("error"))
    delfun(id)
@@ -58,6 +59,7 @@ const WishList = () => {
 
   return (
     <>
+    <Navbar />
     <div className={styles.div} >Your WishList</div>
      <div  className={styles.container} >
 

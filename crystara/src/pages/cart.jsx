@@ -97,14 +97,14 @@ const Cart = ({data}) => {
 
       const Renderdata=()=>{
         axios
-          .get(`http://localhost:8080/cart`)
+          .get(`https://mock-server-crystara.onrender.com/cart`)
           .then((res) => setmaindata(res.data))
           .catch((err) => console.log("error"));
       }
   
       const del=(id)=>{
        axios
-         .delete(`http://localhost:8080/cart/${id}`)
+         .delete(`https://mock-server-crystara.onrender.com/cart/${id}`)
          .then((res) => Renderdata())
          .catch((err) => console.log("error"));
     }
@@ -124,7 +124,7 @@ const Cart = ({data}) => {
          
 
         axios
-          .post(`http://localhost:8080/wishlist`, data)
+          .post(`https://mock-server-crystara.onrender.com/wishlist`, data)
           .then((res) => console.log(res))
           .catch((err) => console.log("error"));
         delfun(id)
@@ -247,7 +247,7 @@ const Cart = ({data}) => {
 
 export async function getServerSideProps(){
   
-  let res = await fetch(`http://localhost:8080/cart`);
+  let res = await fetch(`https://mock-server-crystara.onrender.com/cart`);
   let data = await res.json()
 
   return {  props: {data} }

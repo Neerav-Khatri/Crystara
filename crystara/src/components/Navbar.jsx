@@ -52,10 +52,10 @@ export default function Navbar() {
   const {user, isAuth} = useSelector((store) => store.loginReducer);
   const [wishLength, setWishLength] = useState(0)
 
-  console.log(user,isAuth);
+  // console.log(user,isAuth);
 
   useEffect(() => {
-    axios.get(`http://localhost:8080/wishlist`)
+    axios.get(`https://mock-server-crystara.onrender.com/wishlist`)
     .then((res) => {
       setWishLength(res.data.length);
     }).catch((error) => {
@@ -64,7 +64,7 @@ export default function Navbar() {
   },[])
 
   const handleChange = (e) => {
-    e.preventDefault();
+    // e.preventDefault();
     setEnterPin(e.target.value);
   };
   const handlePincode = () => {
@@ -72,7 +72,7 @@ export default function Navbar() {
     fetch(`https://api.postalpincode.in/pincode/${enterPin}`)
       .then((r) => r.json())
       .then((res) => {
-        console.log(blockName);
+        // console.log(blockName);
         setBlockName(res[0].PostOffice[0].Block);
         // setBlockName(res[0]);
       });
@@ -212,9 +212,9 @@ export default function Navbar() {
                 {enterPin.length > 0 ? blockName : ""}
               </Text>
             </Flex>
-            <Box>
+            {/* <Box>
               <BasicUsage />
-            </Box>
+            </Box> */}
             <Flex
               justifyContent={"center"}
               alignItems="center"
@@ -645,65 +645,66 @@ const MobileNavItem = ({ label, children, href, material }) => {
   );
 };
 
-function BasicUsage() {
-  const { isOpen, onOpen, onClose } = useDisclosure();
-  const [country, setCountry] = useState(``);
-  const [src, setSrc] = useState(`https://countryflagsapi.com/png/in`);
-  const handleCountryClick = () => {
-    // getCountryFlag(country).then((r) => r.json()).then((res)=>{
-    //   console.log(res)
-    // });
-    setSrc(`https://countryflagsapi.com/png/${country}`);
-    onClose();
-    setCountry("");
-  };
-  return (
-    <>
-      <Button padding={0} width={"30px"} borderRadius={"50%"}>
-        <Image
-          onClick={onOpen}
-          src={src}
-          height={30}
-          width={30}
-          alt="country-logo"
-        />
-      </Button>
-      <Modal isOpen={isOpen} onClose={onClose}>
-        <ModalOverlay />
-        <ModalContent>
-          <ModalHeader>Update Country</ModalHeader>
-          <ModalCloseButton />
-          <ModalBody>
-            {/* <Input
-              placeholder="Enter Country"
-              value={country}
-              onChange={(e) => {
-                setCountry(e.target.value);
-              }}
-            /> */}
-            <Select
-              onChange={(e) => setCountry(e.target.value)}
-              placeholder="Select option"
-            >
-              <option value="in">India</option>
-              <option value="br">Brazil</option>
-              <option value="ae">United Arab Emirates</option>
-              <option value="au">Australia</option>
-              <option value="bd">Bangladesh</option>
-              <option value="jp">Japan</option>
-              <option value="gb-eng">England</option>
-              <option value="iq">Iraq</option>
-            </Select>
-          </ModalBody>
+// function BasicUsage() {
+//   const { isOpen, onOpen, onClose } = useDisclosure();
+//   const [country, setCountry] = useState(``);
+//   const [src, setSrc] = useState(`https://countryflagsapi.com/png/in`);
+//   const handleCountryClick = () => {
+//     // getCountryFlag(country).then((r) => r.json()).then((res)=>{
+//     //   console.log(res)
+//     // });
+//     let res = axios.get(`https://countryflagsapi.com/png/${country}`);
+//     setSrc(res.data);
+//     onClose();
+//     setCountry("");
+//   };
+//   return (
+//     <>
+//       <Button padding={0} width={"30px"} borderRadius={"50%"}>
+//         <Image
+//           onClick={onOpen}
+//           src={src}
+//           height={30}
+//           width={30}
+//           alt="country-logo"
+//         />
+//       </Button>
+//       <Modal isOpen={isOpen} onClose={onClose}>
+//         <ModalOverlay />
+//         <ModalContent>
+//           <ModalHeader>Update Country</ModalHeader>
+//           <ModalCloseButton />
+//           <ModalBody>
+//             {/* <Input
+//               placeholder="Enter Country"
+//               value={country}
+//               onChange={(e) => {
+//                 setCountry(e.target.value);
+//               }}
+//             /> */}
+//             <Select
+//               onChange={(e) => setCountry(e.target.value)}
+//               placeholder="Select option"
+//             >
+//               <option value="in">India</option>
+//               <option value="br">Brazil</option>
+//               <option value="ae">United Arab Emirates</option>
+//               <option value="au">Australia</option>
+//               <option value="bd">Bangladesh</option>
+//               <option value="jp">Japan</option>
+//               <option value="gb-eng">England</option>
+//               <option value="iq">Iraq</option>
+//             </Select>
+//           </ModalBody>
 
-          <ModalFooter>
-            <Button colorScheme="purple" mr={3} onClick={handleCountryClick}>
-              Update
-            </Button>
-            {/* <Button variant="ghost">Secondary Action</Button> */}
-          </ModalFooter>
-        </ModalContent>
-      </Modal>
-    </>
-  );
-}
+//           <ModalFooter>
+//             <Button colorScheme="purple" mr={3} onClick={handleCountryClick}>
+//               Update
+//             </Button>
+//             {/* <Button variant="ghost">Secondary Action</Button> */}
+//           </ModalFooter>
+//         </ModalContent>
+//       </Modal>
+//     </>
+//   );
+// }
