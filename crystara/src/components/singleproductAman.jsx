@@ -4,7 +4,7 @@ import React from 'react'
 import styles from "../styles/demo.module.css"
 import Head from 'next/head'
 import {AiFillStar} from "react-icons/ai"
-import {IoMdHeartEmpty } from "react-icons/Io"
+import {IoMdHeartEmpty } from "react-icons/io"
 import {GoLocation} from "react-icons/go"
 import {BsBag,BsFillHandbagFill,BsArrowRight,BsApple} from "react-icons/bs"
 import {FaVideo,FaWeight,FaGooglePlay} from "react-icons/fa"

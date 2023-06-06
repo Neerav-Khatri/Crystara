@@ -78,7 +78,7 @@
     min-height: 12rem;
     display: flex;
     flex-direction: column;
-    justify-content: end;
+    justify-content: flex-end;
     gap:0.7rem;
     padding: 0.7rem 0;
 }

@@ -16,7 +16,7 @@ export const registered = () => {
 export const registerUser = (data) => (dispatch) => {
     dispatch(handleLoading);
     axios
-      .post(`http://localhost:8080/user`, data)
+      .post(`https://mock-server-crystara.onrender.com/user`, data)
       .then((res) => {
         dispatch(registered);
       })
@@ -30,7 +30,7 @@ export const loginUser = (data) => (dispatch) => {
     dispatch(handleLoading);
     axios
       .get(
-        `http://localhost:8080/user?q=${data.email}&${data.password}`
+        `https://mock-server-crystara.onrender.com/user?q=${data.email}&${data.password}`
       )
       .then((res) => {
         dispatch({ type: types.USER_LOGIN, payload: res.data });
@@ -45,7 +45,7 @@ export const adminLogin = (data) => (dispatch) => {
     dispatch(handleLoading);
     axios
       .get(
-        `http://localhost:8080/admin?q=${data.email}&${data.password}`
+        `https://mock-server-crystara.onrender.com/admin?q=${data.email}&${data.password}`
       )
       .then((res) => {
         dispatch({ type: types.ADMIN_LOGIN, payload: res.data });
