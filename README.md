@@ -1,6 +1,6 @@
 
-<h1>About</h1>
-We have clone the website "caratlane.com". CaratLane is an Indian physical and online jewelry retailer. We have given a unique name called "Crystara" and logo our website. It is a collabrative project with a team of 5 members build in a span of 5 days. 
+<h1>Crystara</h1>
+Crystara: Your exquisite online jewelry destination. Discover stunning handpicked pieces, certified quality, and personalized assistance. Seamlessly browse, customize, and indulge in fine jewelry with secure transactions and reliable shipping. Let Crystara adorn your life with brilliance and elegance. Explore now, enchanting beauty awaits.
 
 <h1>Steps to start</h1>
 - Clone the repository<br/>
