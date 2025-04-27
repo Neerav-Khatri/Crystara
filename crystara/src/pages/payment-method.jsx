@@ -155,7 +155,7 @@ export default function PaymentMethod({ data }) {
                       fontSize: "1.5rem",
                     }}
                   >
-                    Shipping Adress
+                    Shipping Address
                   </h1>
 
                   <Box
@@ -239,11 +239,13 @@ export default function PaymentMethod({ data }) {
                     })}
                   </RadioGroup>
                   <br />
+
+                  <Flex justifyContent={'center'} alignItems={'center'} >
                   <Link textDecoration={"none"} outline={"none"} href="/paymentoptions">
                     <Button
                       bgColor={"rgb(206,89,233)"}
                       color="white"
-                      width={"20rem"}
+                      width={"18rem"}
                       _hover={"none"}
                       textDecoration="none"
 
@@ -251,9 +253,15 @@ export default function PaymentMethod({ data }) {
                       Pay ₹{Price-Saving}
                     </Button>
                   </Link>
+                  </Flex>
+
+
                   <Divider />
-                  <h1>Shipping Adress</h1>
+                  <Flex justifyContent={'center'} alignItems={'center'} fontSize={'1.1rem'} fontWeight={600} mt='1rem'>
+                    <h1>Shipping Adress</h1>
+                    </Flex>
                   <br />
+                  <Flex justifyContent={'center'} alignItems={'center'}>
                   <Box
                     // width={"2rem"}
                     height={"auto"}
@@ -268,6 +276,7 @@ export default function PaymentMethod({ data }) {
                     <p>India</p>
                     <p>Adress Type: Home</p>
                   </Box>
+                  </Flex>
                 </Box>
               </AccordionPanel>
             </AccordionItem>
