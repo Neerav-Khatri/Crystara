@@ -34,9 +34,10 @@ const PaymentOptions = () => {
   // })
  
   return (
-    <Box bgColor={"gray.100"}>
+    <Box bgColor={"gray.100"}  >
       <Center
-        w={"50%"}
+     
+        w={{base:'90%',sm:"90%",md:'70%',lg:'50%'}}
         margin="auto"
         // marginTop={"1rem"}
         color="black"
@@ -109,6 +110,7 @@ const PaymentOptions = () => {
                         align="center"
                         key={item.id}
                         justifyContent={"space-between"}
+                     
                       >
                         <Flex align={"center"} gap={"0.5rem"}>
                           <Box>
@@ -177,7 +179,7 @@ const paymentOptions = [
     url: "",
   },
   {
-    logo: "https://api.payu.in/public/assets/images/upi-logos/upi2/WhatsApp.svg",
+    logo: "https://img.freepik.com/free-vector/whatsapp-icon-design_23-2147900929.jpg?semt=ais_hybrid&w=740",
     name: "WhatsApp",
     desc: "Pay using any credit card",
     id: 4,

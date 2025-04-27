@@ -1,5 +1,4 @@
 import ShowOtp from "@/components/ShowOtp";
-import { ViewIcon, ViewOffIcon } from "@chakra-ui/icons";
 import {
   Box,
   Button,
@@ -13,14 +12,6 @@ import {
   HStack,
   Input,
   InputGroup,
-  InputRightElement,
-  Modal,
-  ModalBody,
-  ModalCloseButton,
-  ModalContent,
-  ModalFooter,
-  ModalHeader,
-  ModalOverlay,
   Spacer,
   Spinner,
   Stack,
@@ -33,25 +24,34 @@ import Image from "next/image";
 import Link from "next/link";
 import React, { useEffect, useState } from "react";
 import { HiArrowLeft } from "react-icons/hi";
-import { IoIosArrowForward } from "react-icons/io";
-import { RiArrowDropRightLine } from "react-icons/ri";
+
 
 const CardsForPay = () => {
-  const [showPassword, setShowPassword] = useState(false);
-  const [number, setNumber] = useState(false);
-  const [date, setDate] = useState(false);
-  const [cvv, setCvv] = useState(false);
-  const [name, setName] = useState(false);
 
-  const finalRef = React.useRef(null);
+  // const [number, setNumber] = useState(false);
+  // const [date, setDate] = useState(false);
+  // const [cvv, setCvv] = useState(false);
+  // const [name, setName] = useState(false);
+
+  const [number, setNumber] = useState("");  // Store actual value
+const [date, setDate] = useState("");      // Store actual value
+const [cvv, setCvv] = useState("");        // Store actual value
+const [name, setName] = useState(""); 
+
   const [loading, setLoading] = useState(false);
   const [show, setShow] = useState(false);
   const handleClick = () => {
-    if (number == false || date == false || cvv == false || name == false) {
+    // if (number == false || date == false || cvv == false || name == false) {
+    //   alert("Enter all details");
+    // } else {
+    //   setLoading(!loading);
+    //   setShow(!show);
+    // }
+    if (!number || !date || !cvv || !name) {
       alert("Enter all details");
     } else {
-      setLoading(!loading);
-      setShow(!show);
+      setLoading(true);
+      setShow(true);
     }
   };
 
@@ -63,27 +63,84 @@ const CardsForPay = () => {
     }
   }, [loading]);
 
+  // const enteringNumber = (e) => {
+  //   e.target.value = e.target.value.replace(/[^0-9]/g, '');
+  //   if (e.target.value.length > 12) {
+  //     e.target.value = e.target.value.slice(0, 12);
+  //   }
+  //   console.log(e.target.value);
+  //   if (e.target.value == "124512451245") {
+  //     setNumber(!number);
+  //   }
+  // };
+  // const enteringDate = (e) => {
+
+  //   let value = e.target.value;
+
+  //   // Only numbers and slash allowed
+  //   value = value.replace(/[^\d/]/g, "");
+
+  //   // Automatically add slash after 2 digits
+  //   if (value.length === 2 && !value.includes("/")) {
+  //     value = value + "/";
+  //   }
+
+  //   // Max length = 5 (MM/YY)
+  //   if (value.length <= 5) {
+  //     setDate(!date);
+  //   }
+  
+  // };
+  // const enteringCVV = (e) => {
+    
+  //   e.target.value = e.target.value.replace(/[^0-9]/g, '');
+  //   if (e.target.value.length > 3) {
+  //     e.target.value = e.target.value.slice(0, 3);
+  //   }
+
+  //   if (e.target.value == "321") {
+  //     setCvv(!cvv);
+  //   }
+  // };
+  // const enteringName = (e) => {
+  //   e.target.value = e.target.value.replace(/[^a-zA-Z\s]/g, '');
+  //   if (e.target.value == "Mustaq") {
+  //     setName(!name);
+  //   }
+  // };
+
   const enteringNumber = (e) => {
-    console.log(e.target.value);
-    if (e.target.value == "124512451245") {
-      setNumber(!number);
+    let value = e.target.value.replace(/[^0-9]/g, '');  // Remove non-numeric characters
+    if (value.length > 12) {
+      value = value.slice(0, 12);  // Limit to 12 digits
     }
+    setNumber(value);  // Store actual card number instead of just toggling boolean
   };
+
   const enteringDate = (e) => {
-    if (e.target.value == "12/23") {
-      setDate(!date);
+    let value = e.target.value.replace(/[^\d/]/g, "");  // Remove anything other than digits and slashes
+
+    if (value.length === 2 && !value.includes("/")) {
+      value = value + "/";  // Auto-insert slash after 2 digits
+    }
+    if (value.length <= 5) {
+      setDate(value);  // Store expiry date instead of just toggling boolean
     }
   };
+
   const enteringCVV = (e) => {
-    if (e.target.value == "321") {
-      setCvv(!cvv);
+    let value = e.target.value.replace(/[^0-9]/g, '');  // Remove non-numeric characters
+    if (value.length > 3) {
+      value = value.slice(0, 3);  // Limit to 3 digits
     }
+    setCvv(value);  // Store actual CVV number instead of just toggling boolean
   };
+
   const enteringName = (e) => {
-    if (e.target.value == "Mustaq") {
-      setName(!name);
-    }
+    let value = e.target.value.replace(/[^a-zA-Z\s]/g, '');  // Remove anything that's not a letter or space
+    setName(value);  // Store name value instead of just toggling boolean
   };
+
 
   if (loading)
     return (
@@ -93,6 +150,7 @@ const CardsForPay = () => {
           height="50rem"
           align="center"
           justifyContent={"center"}
+       
         >
           <Spinner
             thickness="4px"
@@ -106,28 +164,31 @@ const CardsForPay = () => {
     );
 
   return (
-    <Box bgColor={"gray.100"}>
+    <Box bgColor={"gray.100"}  border='1px'  >
+    
       {!show && (
         <Center
-          w={"50%"}
+          w={{base:'99%',sm:'99%',md:'70%',lg:"50%"}}
           margin="auto"
           // marginTop={"1rem"}
           color="black"
-          border={"1px solid #f5f5f5"}
+          //border={"1px solid #f5f5f5"}
           bgColor="white"
           paddingTop={"1rem"}
           paddingBottom={"5rem"}
+       
         >
-          <Flex>
-            <Box p="4">
-              <Flex align={"center"} justifyContent="space-between">
+          <Flex  >
+
+            <Box p="0.2rem" w='45%' >
+              <Flex align={"center"} justifyContent="space-between" >
                 <Link href={"/paymentoptions"}>
                   <Flex gap={2}>
                     <HiArrowLeft cursor={"pointer"} size={30} />
                     <p style={{ fontWeight: "bold" }}>Back</p>
                   </Flex>
                 </Link>
-                <Box border={"1px solid #f5f5f5"}>
+                <Box border={"1px solid #f5f5f5"}   >
                   <Stack padding={3}>
                     <Image
                       src={
@@ -142,11 +203,11 @@ const CardsForPay = () => {
               </Flex>
               <br />
               {/* <h1 style={{fontWeight:"bolder", fontSize:""}}>Choose a payment Option</h1> */}
-              <Text fontSize={"xl"} fontWeight="bold">
+              <Text fontSize={"xl"} fontWeight="bold" >
                 Choose a payment option
               </Text>
               <br />
-              <Flex align={"center"} justifyContent="space-between">
+              <Flex align={"center"} justifyContent="space-between" >
                 <p>payable now</p>
                 <p
                   style={{
@@ -159,8 +220,16 @@ const CardsForPay = () => {
               <br />
               <h6>Transaction id: FSHJAH6S3</h6>
             </Box>
+
+
+
+
+
+            
             <Spacer />
-            <Box p="4">
+
+            
+            <Box p="0.2rem" w='52%'>
               <h1 style={{ color: "#c5a899" }}>CREDIT CARD</h1>
               <Box
                 marginTop={"1rem"}
@@ -177,6 +246,7 @@ const CardsForPay = () => {
                   align={"center"}
                   justify={"center"}
                   bg={useColorModeValue("gray.50", "gray.800")}
+                
                 >
                   <Stack
                     spacing={8}
@@ -200,10 +270,10 @@ const CardsForPay = () => {
                           <Input
                             onChange={enteringNumber}
                             backgroundColor={"Background"}
-                            type="text"
+                            type="number"
                           />
                         </FormControl>
-                        <HStack>
+                        
                           <Box>
                             <FormControl id="firstName" isRequired>
                               <FormLabel fontWeight={"light"}>
@@ -213,6 +283,7 @@ const CardsForPay = () => {
                                 onChange={enteringDate}
                                 backgroundColor={"Background"}
                                 type="text"
+                                   placeholder="MM/YY"
                               />
                             </FormControl>
                           </Box>
@@ -221,12 +292,13 @@ const CardsForPay = () => {
                               <FormLabel fontWeight={"light"}>CVV</FormLabel>
                               <Input
                                 onChange={enteringCVV}
+                              
                                 backgroundColor={"Background"}
-                                type="text"
+                                type="number"
                               />
                             </FormControl>
                           </Box>
-                        </HStack>
+                        
 
                         <FormControl id="password" isRequired>
                           <FormLabel fontWeight={"light"}>
@@ -240,15 +312,16 @@ const CardsForPay = () => {
                             />
                           </InputGroup>
                         </FormControl>
-                        <Stack spacing={10} pt={2}>
+                        
                           <Stack
-                            direction={{ base: "column", sm: "row" }}
+                         
                             align={"start"}
                             justify={"space-between"}
                             fontWeight="light"
+                        
                           >
                             <Checkbox>
-                              Secure this option for faster checkouts
+                              Secure option for faster checkouts
                             </Checkbox>
                             {/* <Link color={"blue.400"}>Forgot password?</Link> */}
                           </Stack>
@@ -265,13 +338,17 @@ const CardsForPay = () => {
                           >
                             PROCEED
                           </Button>
-                        </Stack>
+                       
                       </Stack>
                     </Box>
                   </Stack>
                 </Flex>
+
+
               </Box>
             </Box>
+
+
           </Flex>
         </Center>
       )}

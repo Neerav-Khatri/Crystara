@@ -9,7 +9,7 @@ import Footer from '@/components/Footer'
 import { useDispatch } from 'react-redux'
 import { Getwish } from '@/redux/Cart/action'
 import Navbar from '@/components/Navbar'
-
+import { Flex, Grid, GridItem } from '@chakra-ui/react'
 const WishList = () => {
 
     const[wishlistdata,setwishlistdata] = React.useState([])
@@ -60,24 +60,25 @@ const WishList = () => {
   return (
     <>
     <Navbar />
-    <div className={styles.div} >Your WishList</div>
-     <div  className={styles.container} >
+    <Flex className={styles.div} justifyContent={'center'} alignItems={'center'} fontWeight={700} >Your WishList</Flex>
+     <Grid  className={styles.container}   templateColumns={{ base: "1fr", md: "repeat(2, 1fr)", lg: "repeat(3, 1fr)" }}  
+             gap={4} p={4}  placeContent={'center'} >
 
         {
 
             wishlistdata.map((el)=>{
 
-                return   <div key={el.id} className={styles.cardname} >
+                return   <GridItem key={el.id} className={styles.cardname}  w='90%'  >
                               <RxCross1 className={styles.crossIcon}  onClick={()=>delfun(el.id)} />
                            <Image className={styles.img1} height={50} width={150} src={el.src1} alt="pic" />
                             <p className={styles.P23} > {el.name} </p>
-                            <div className={styles.cartPdiv}  >
+                            <GridItem className={styles.cartPdiv}  >
                             <p className={styles.P22} > ₹{el.currentPrice} </p>
                             <button className={styles.btn5} onClick={()=>cartPost(el.id)} >Move to Cart</button>
-                         </div>
+                         </GridItem>
                
     
-            </div>
+            </GridItem>
 
                   
 
@@ -87,7 +88,7 @@ const WishList = () => {
 
       
         
-     </div>
+     </Grid>
 
      <Footer />
     

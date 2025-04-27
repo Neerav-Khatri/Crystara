@@ -10,6 +10,7 @@ const Card_2 = () => {
           lg: "repeat(2, 1fr)",
         }}
         gap={6} padding="10"
+      
         
       >
         <GridItem>

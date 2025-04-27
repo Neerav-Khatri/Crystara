@@ -32,19 +32,19 @@ export default function ProductCard({ data, handleWishAdd, handleWishDelete, han
     
     return (
         <div>
-            <Flex direction="column" boxShadow="rgba(0, 0, 0, 0.24) 0px 3px 8px;">
+            <Flex direction="column" boxShadow="rgba(0, 0, 0, 0.24) 0px 3px 8px;" >
                 <Box pos="relative">
                     <Image w="100%" src={data.src1} alt="image"   onClick={() => handleDetailPage(data.id)}/>
-                {data.tag!==undefined ? <Badge color={"#786c84"} bgColor={"#f2debc"} alt="tag" w="7vw" pos="absolute" top="10px" left={"10px"} fontSize={"1vw"}>{data.tag}</Badge> : null}
+                {data.tag!==undefined ? <Box color={"#786c84"} bgColor={"#f2debc"} alt="tag" w="33%" pos="absolute" top="10px" left={"10px"} fontWeight={700} fontSize={"0.7rem"}>{data.tag}</Box> : null}
                     <Box pos="absolute" right="20px" bottom="20px" _hover={{cursor: "pointer"}} >{liked ? <FcLike size="2vw" onClick={handleRemoveWishlist}/> : <AiOutlineHeart size="2vw" onClick={handleAddWishlist}/>}</Box>
                 </Box>   
                 <Box textAlign="left" p="10px">
                     <Flex gap="15px" mb="10px" fontWeight="bold">
-                        <Text fontSize={"1.5vw"}>₹ {data.currentPrice}</Text>
-                        {data.originalPrice!==undefined? data.originalPrice!==""? <Text color="#686868" textDecorationLine="line-through" fontSize={"1vw"}>₹ {data.originalPrice}</Text> : null : null}
+                        <Text fontSize={"0.8rem"}>₹ {data.currentPrice}</Text>
+                        {data.originalPrice!==undefined? data.originalPrice!==""? <Text color="#686868" textDecorationLine="line-through" fontSize={"0.7rem"}>₹ {data.originalPrice}</Text> : null : null}
                     </Flex>
-                    <Text fontSize={"1vw"}>{data.material}</Text>
-                    <Text noOfLines="1" fontSize={"1vw"}>{data.name}</Text>
+                    <Text fontSize={"0.7rem"} fontWeight={500} >{data.material}</Text>
+                    <Text noOfLines="1" fontSize={"0.7rem"} fontWeight={500}>{data.name}</Text>
                 </Box>   
             </Flex>
         </div>

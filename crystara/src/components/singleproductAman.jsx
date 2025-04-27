@@ -17,7 +17,7 @@ import { useRef } from 'react'
 import {useRouter} from 'next/router'
 import { useDispatch,useSelector } from 'react-redux'
 import { GetPin } from '@/redux/Cart/action'
-
+import { Box } from '@chakra-ui/react'
 
 
 
@@ -145,9 +145,9 @@ const SingleProductPage = ({src1,src2,src3,video,originalPrice,currentPrice,name
            <BsFillHandbagFill  className={styles.cartIcon}   />  ADD TO CART
         </div>
         
-        <div className={styles.contactdiv} >
+        <Box className={styles.contactdiv}   m='2rem 1rem 0 1rem'  >
 
-           <div className={styles.Videocall} >
+           <Box className={styles.Videocall}   >
               <div className={styles.VideocallInsidediv} >
                 <div className={styles.VideocallInsidediv1}  > <FaVideo className={styles.videoIcon} /> </div>
                 <div  className={styles.VideocallInsidediv2} >
@@ -156,7 +156,7 @@ const SingleProductPage = ({src1,src2,src3,video,originalPrice,currentPrice,name
                 </div>
               </div>
              <button className={styles.btn} >Schedule a Video Call</button>
-           </div>
+           </Box>
 
            <div className={styles.Videocall} >
               <div className={styles.VideocallInsidediv} >
@@ -169,7 +169,7 @@ const SingleProductPage = ({src1,src2,src3,video,originalPrice,currentPrice,name
              <button className={styles.btn2} >Schedule a Video Call</button>
            </div>
          
-        </div>
+        </Box>
 
 
         </div>

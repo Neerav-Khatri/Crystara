@@ -57,7 +57,7 @@ const NavSearch = () => {
   };
 
   return (
-    <Box  w="100%" position="relative">
+    <Box  w="100%" position="relative" mt='-2.6rem'>
       <InputGroup>
         <Input
           border={"1px solid purple"}
@@ -68,11 +68,11 @@ const NavSearch = () => {
           placeholder="Search"
           width={"100%"}
         />
-        <InputRightElement
+        {/* <InputRightElement
           color={"white"}
           bgColor={"purple.400"}
           children={<BsSearch color="gray.300" />}
-        />
+        /> */}
       </InputGroup>
       {suggestions.length > 0 && (
         <Box

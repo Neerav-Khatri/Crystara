@@ -138,37 +138,35 @@ const Earrings = () => {
                 </Flex>
             </Flex>
             
-            <Text className={styles.variety}><Code fontWeight="bold" variant="none" fontSize="1vw">Earrings</Code>{data.length? data.length : product.length} Designs</Text>
+            <Text className={styles.variety}fontSize="0.9rem" fontWeight={700}><Code fontWeight="bold" variant="none" fontSize="1rem">Earrings</Code>{data.length? data.length : product.length} Designs</Text>
         </Box>
 
         {/* Filter and card section */}
 
-        <Box p="10px">
-            <Flex p="10px" justifyContent={"space-around"}>
-                <Box w="22%" >
-                    <Box w="85%" m="auto" boxShadow="rgba(0, 0, 0, 0.24) 0px 3px 8px" borderTopRadius="20px">
-                        <Box className={styles.filter}><Text>Filter By</Text></Box>
-                        <Box p="20px">
+        <Box p="1px">
+            <Flex p="5px" justifyContent={"space-around"}>
+            <Box w="30%" >
+                    <Box w={{base:'90%',md:"70%",lg:"60%"}} m="auto"  boxShadow="rgba(0, 0, 0, 0.24) 0px 3px 8px" borderTopRadius="20px">
+                        <Box className={styles.filter}   fontSize={'0.9rem'} ><Text>Filter By</Text></Box>
+                        <Flex flexDir={'column'} justifyContent={'center'} alignItems={'center'} p="0.2rem" >
                             <CheckboxGroup colorScheme='green'>
-                                <Text fontSize="1.2vw" fontWeight="semibold" mb="10px">Products Types</Text>
+                                <Text  fontWeight="semibold" mb="10px" fontSize={'0.7rem'}>Products Types</Text>
                                 <Stack spacing="2" direction="column">
-                                    <Link href={"/arrival"}><Checkbox value='arrival'><Text className={styles.filterCheck}>New Arrival</Text></Checkbox></Link>
-                                    <Link href={"/rings"}><Checkbox value='rings'><Text className={styles.filterCheck}>Rings</Text></Checkbox></Link>
-                                    <Link href={"/earrings"}><Checkbox value='earrings'><Text className={styles.filterCheck}>Earrings</Text></Checkbox></Link>
-                                    <Link href={"bracelets"}><Checkbox value="bracelets"><Text className={styles.filterCheck}>Bracelets</Text></Checkbox></Link>
+                                    <Link href={"/arrival"}><Checkbox value='arrival'><Text className={styles.filterCheck}  fontSize={'0.7rem'}  >New Arrival</Text></Checkbox></Link>
+                                    <Link href={"/rings"}><Checkbox value='rings'><Text className={styles.filterCheck} fontSize={'0.7rem'}  >Rings</Text></Checkbox></Link>
+                                    <Link href={"/earrings"}><Checkbox value='earrings'><Text className={styles.filterCheck} fontSize={'0.7rem'}  >Earrings</Text></Checkbox></Link>
+                                    <Link href={"bracelets"}><Checkbox value="bracelets"><Text className={styles.filterCheck} fontSize={'0.7rem'}  >Bracelets</Text></Checkbox></Link>
                                 </Stack>
                             </CheckboxGroup>
                             <br/><hr/><br/>
                             <CheckboxGroup colorScheme='green' onChange={(e) => setMaterial(e.join(""))}>
-                                <Text fontSize="1.2vw" fontWeight="semibold" mb="10px">Material</Text>
+                                <Text fontWeight="semibold" mb="10px" fontSize={'0.7rem'} >Material</Text>
                                 <Stack spacing="2" direction="column">
-                                    <Checkbox value='Diamond'><Text className={styles.filterCheck}>Diamond</Text></Checkbox>
-                                    <Checkbox value='Gemstone'><Text className={styles.filterCheck}>Gemstone</Text></Checkbox>
-                                    <Checkbox value="Gold"><Text className={styles.filterCheck}>Gold</Text></Checkbox>
-                                    <Checkbox value="Pearls"><Text className={styles.filterCheck}>Pearl</Text></Checkbox>
+                                    <Checkbox value='Diamond'><Text className={styles.filterCheck} fontSize={'0.7rem'} >Diamond</Text></Checkbox>
+                                    <Checkbox value='Solitaire'><Text className={styles.filterCheck} fontSize={'0.7rem'} >Solitaire</Text></Checkbox>
                                 </Stack>
                             </CheckboxGroup>
-                        </Box>
+                        </Flex>
                     </Box>
                 </Box>
 
