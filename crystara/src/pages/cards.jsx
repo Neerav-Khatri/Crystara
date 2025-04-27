@@ -120,20 +120,25 @@ const [name, setName] = useState("");
   const enteringDate = (e) => {
     let value = e.target.value.replace(/[^\d/]/g, "");  // Remove anything other than digits and slashes
 
+    // Insert slash automatically after the 2 digits for the month (MM/YY format)
     if (value.length === 2 && !value.includes("/")) {
       value = value + "/";  // Auto-insert slash after 2 digits
     }
+
+    // Limit the length of the input to 5 (MM/YY)
     if (value.length <= 5) {
-      setDate(value);  // Store expiry date instead of just toggling boolean
+      setDate(value);  // Store expiry date in state
     }
   };
 
   const enteringCVV = (e) => {
-    let value = e.target.value.replace(/[^0-9]/g, '');  // Remove non-numeric characters
-    if (value.length > 3) {
-      value = value.slice(0, 3);  // Limit to 3 digits
+    // Get the value of the input
+    let value = e.target.value;
+
+    // Limit to 3 digits and ensure it's numeric
+    if (value.length <= 3 && /^[0-9]*$/.test(value)) {
+      setCvv(value); // Update the state with the new value
     }
-    setCvv(value);  // Store actual CVV number instead of just toggling boolean
   };
 
   const enteringName = (e) => {
@@ -149,7 +154,7 @@ const [name, setName] = useState("");
           bgColor={"gray.200"}
           height="50rem"
           align="center"
-          justifyContent={"center"}
+          justifyContent={"right"}
        
         >
           <Spinner
@@ -164,7 +169,7 @@ const [name, setName] = useState("");
     );
 
   return (
-    <Box bgColor={"gray.100"}  border='1px'  >
+    <Box bgColor={"gray.100"}   >
     
       {!show && (
         <Center
@@ -178,14 +183,14 @@ const [name, setName] = useState("");
           paddingBottom={"5rem"}
        
         >
-          <Flex  >
+          <Flex  justifyContent={'center'}  >
 
-            <Box p="0.2rem" w='45%' >
-              <Flex align={"center"} justifyContent="space-between" >
+            <Box p="0.2rem" w='45%'  >
+              <Flex align={"center"} justifyContent="center" >
                 <Link href={"/paymentoptions"}>
                   <Flex gap={2}>
-                    <HiArrowLeft cursor={"pointer"} size={30} />
-                    <p style={{ fontWeight: "bold" }}>Back</p>
+                    <HiArrowLeft cursor={"pointer"}  size={20} />
+                    <p style={{ fontWeight: 600 }}>Back</p>
                   </Flex>
                 </Link>
                 <Box border={"1px solid #f5f5f5"}   >
@@ -203,22 +208,22 @@ const [name, setName] = useState("");
               </Flex>
               <br />
               {/* <h1 style={{fontWeight:"bolder", fontSize:""}}>Choose a payment Option</h1> */}
-              <Text fontSize={"xl"} fontWeight="bold" >
-                Choose a payment option
+              <Text fontSize={'1rem'} fontWeight={500} ml='0.5rem' >
+                Choose payment option
               </Text>
               <br />
-              <Flex align={"center"} justifyContent="space-between" >
-                <p>payable now</p>
-                <p
+              <Flex alignContent={"center"} justifyContent="space-between" >
+                <Text fontSize={'1rem'} fontWeight={500} ml='0.5rem'>payable now</Text>
+                <Text
                   style={{
-                    fontWeight: "bold",
+                    fontWeight:600,
                   }}
                 >
-                  ₹19884
-                </p>
+                  ₹9984
+                </Text>
               </Flex>
               <br />
-              <h6>Transaction id: FSHJAH6S3</h6>
+              <Text  fontSize={'1rem'} fontWeight={500} ml='0.5rem' >Transaction id: FSHJAH6S3</Text>
             </Box>
 
 
@@ -279,23 +284,39 @@ const [name, setName] = useState("");
                               <FormLabel fontWeight={"light"}>
                                 Expiry Date
                               </FormLabel>
-                              <Input
+                              {/* <Input
                                 onChange={enteringDate}
                                 backgroundColor={"Background"}
                                 type="text"
                                    placeholder="MM/YY"
-                              />
+                              /> */}
+                               <Input
+                                type="text"
+                                value={date}
+                                onChange={enteringDate} 
+                                backgroundColor={"Background"} 
+                               placeholder="MM/YY"
+                                  maxLength={5} // Max length of 5 characters (MM/YY)
+                                  />
                             </FormControl>
                           </Box>
                           <Box>
                             <FormControl id="lastName" isRequired>
                               <FormLabel fontWeight={"light"}>CVV</FormLabel>
-                              <Input
+                              {/* <Input
                                 onChange={enteringCVV}
                               
                                 backgroundColor={"Background"}
                                 type="number"
-                              />
+                              /> */}
+                                 <Input
+                                   type="number"
+                                   value={cvv} 
+                                  onChange={enteringCVV} 
+                                     backgroundColor="Background" 
+                                  maxLength={3} 
+                                  placeholder="Enter CVV"
+                                      />
                             </FormControl>
                           </Box>
                         

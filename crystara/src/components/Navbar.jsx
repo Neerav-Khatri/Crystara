@@ -151,12 +151,12 @@ export default function Navbar() {
          
           // width={"25%"}
         >
-          <Flex   w='35%' mt='-1rem'>
+          <Flex   w={{base:'30%',sm:'30%',lg:"35%"}} mt='-1rem'>
               <NavSearch  />
           </Flex>
           
           <Flex
-            w="63%"
+            w={{base:'70%',sm:"70%",lg:'62%'}}
             gap={"1rem"}
             textAlign={"center"}
             justifyContent="space-between"
@@ -208,8 +208,17 @@ export default function Navbar() {
                       Pincode
                     </h1>
                     <Input
+                      type='number'
                       placeholder="enter your pincode"
-                      onChange={handleChange}
+                      // onChange={handleChange}
+                      maxLength={6}
+                      value={enterPin} // Bind the input value to a state variable
+                     onChange={(e) => {
+                   const value = e.target.value;
+                    if (value.length <= 6 && /^[0-9]*$/.test(value)) { // Ensures it's numeric and <= 6 digits
+                    handleChange(e); // Custom handle change function
+                      }
+                     }}
                     ></Input>
                     <Button onClick={handlePincode}>Submit</Button>
                   </Stack>
@@ -266,9 +275,7 @@ export default function Navbar() {
                       <Text>{isAuth && user ? user.first_name : "User"}</Text>
                     </Link>
                     <Divider />
-                    <Link href="/adminLogin">
-                      <Text>Admin</Text>
-                    </Link>
+                   
                   </Stack>
                 </PopoverContent>
               </Popover>
@@ -277,7 +284,7 @@ export default function Navbar() {
 
 
            
-             <Flex >
+             <Flex  >
              <Link href="/wishList">
               <Button
          
@@ -287,7 +294,7 @@ export default function Navbar() {
                 bg={"transparent"}
                 _hover={"none"}
               >
-                <BsHeartFill size={"1.1rem"} />
+                <BsHeartFill size={"1.1rem"}  />
                 <Box
                   bgColor={"purple"}
                   borderRadius="full"
@@ -295,6 +302,7 @@ export default function Navbar() {
                   color={"white"}
                   marginLeft={"-0.7rem"}
                   marginTop={"0.8rem"}
+               
                 >
                   {wishLength}
                 </Box>
@@ -308,7 +316,7 @@ export default function Navbar() {
             <Flex >
             <Link href="/cart">
               <Button
-               
+                  border='1px'
                 display="flex"
                 gap={0}
                 alignItems="center"
