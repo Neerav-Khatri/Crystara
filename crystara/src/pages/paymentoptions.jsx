@@ -51,7 +51,7 @@ const PaymentOptions = () => {
             <Flex align={"center"} justifyContent="space-between">
               <Link href={"/payment-method"}>
                 <Flex gap={2}>
-                  <HiArrowLeft cursor={"pointer"} size={30} />
+                  <HiArrowLeft cursor={"pointer"} size={20} />
                   <p style={{ fontWeight: "bold" }}>Back</p>
                 </Flex>
               </Link>
