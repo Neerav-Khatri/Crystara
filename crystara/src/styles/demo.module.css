@@ -304,6 +304,10 @@
   min-height: 80%;
   display: flex;
  align-items: center;
+
+
+
+
 }
 
 
@@ -315,7 +319,7 @@
 
      
 .preBtn,.nextBtn{
-  z-index: 100;
+ 
   position: absolute;
   width:60px;
   height: 60px;
@@ -329,6 +333,8 @@
   background-color: rgba(255, 255, 255, 0.614);
   
   
+
+ 
 }
 .nextBtn{
 right:2rem;

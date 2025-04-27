@@ -89,7 +89,7 @@ const Rings = () => {
       }
 
   return (
-    <>
+    <Box  >
     <Head>
         <title>Product Page</title>
     </Head>
@@ -195,7 +195,7 @@ const Rings = () => {
 
         <Footer />
     </div>
-    </>
+    </Box>
   )
 }
 

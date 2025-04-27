@@ -82,7 +82,7 @@ export default function Navbar() {
 
 
   return (
-    <Box width={"100%"} className="sticky">
+    <Box width={"100%"} className="sticky"   >
       <Flex
       
         bg={useColorModeValue("#E9D5EF", "gray.100")}
@@ -316,7 +316,7 @@ export default function Navbar() {
             <Flex >
             <Link href="/cart">
               <Button
-                  border='1px'
+                 
                 display="flex"
                 gap={0}
                 alignItems="center"
