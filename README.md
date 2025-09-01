@@ -7,7 +7,7 @@
 
 Crystara: Your exquisite online jewelry destination. Discover stunning handpicked pieces, certified quality, and personalized assistance. Seamlessly browse, customize, and indulge in fine jewelry with secure transactions and reliable shipping. Let Crystara adorn your life with brilliance and elegance. Explore now, enchanting beauty awaits.
 
-As part of our collaborative project during Construct Week at Masai School, we developed a online jewelry website inspired by Caratlane. In just 5 days, our team of 4 developers created an authentication system, landing page, product pages, wishlist page, cart page and payment system with a focus on enhancing the user experience. We worked hard to ensure that the website was functional and aesthetically appealing, and incorporated our own unique ideas and designs into the project.
+we developed a online jewelry website inspired by Caratlane. In just 5 days, our team of 4 developers created an authentication system, landing page, product pages, wishlist page, cart page and payment system with a focus on enhancing the user experience. We worked hard to ensure that the website was functional and aesthetically appealing, and incorporated our own unique ideas and designs into the project.
 
 ## Team
 - Neerav Khatri
